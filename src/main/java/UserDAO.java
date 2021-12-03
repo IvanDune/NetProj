@@ -1,6 +1,7 @@
 import javax.swing.plaf.nimbus.State;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.sql.Statement;
 
 public class UserDAO {
 
@@ -10,7 +11,7 @@ public class UserDAO {
 
     public UserDAO(Statement stmt){
         this.stmt=stmt;
-    }
+    } // проблема с datesource и statement. Должно стоять stmt
 
     public void insertNewUser(String table, String login, String password, String nickname, String email){
        stringBuilder.append("insert into ").append(table + " (login, password, nickname, email) values (").append(login+',')
