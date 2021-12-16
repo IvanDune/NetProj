@@ -1,7 +1,14 @@
 <html>
 <body>
 <div>
+    <form action="/logout}" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
     <form method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="text" name="login" placeholder="Enter user's login"/>
         <input type="text" name="password" placeholder="Enter user's password"/>
         <input type="text" name="nickname" placeholder="Enter user's nickname"/>
@@ -10,6 +17,7 @@
     </form>
 </div>
 <form method="post" action="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
     <input type="text" name="filter">
     <button type="submit">Find</button>
 </form>
