@@ -16,18 +16,18 @@ public class RegistrationController {
     @Autowired
     private UserRepos userRepos;
 
-    @GetMapping("/registration")
+    @GetMapping("/registrtion")
     public String registration(){
-        return "registration";
+        return "registrattion";
     }
 
 
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model ){
         Iterable<User> userFromDb = userRepos.findByNickname(user.getNickname());
-        if (userFromDb != null){
+        if (userFromDb != null && userFromDb.iterator().hasNext()){
             model.put("user", "User exist");
-            return "/registration";
+            return "registration";
         }
         user.setRoles(Collections.singleton(Role.USER));
         userRepos.save(user);

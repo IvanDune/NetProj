@@ -42,10 +42,10 @@ public class MainController {
         model.put("users",users);
         return "main";
     }
-    @PostMapping("filter")
+    @PostMapping("/filter")
     public String filter(@RequestParam String filter, Map<String, Object> model){
         Iterable<User> users;
-        if (filter != null && filter.isEmpty()){
+        if (filter != null && !filter.isEmpty()){
             users = userRepos.findByNickname(filter);
         } else{
             users = userRepos.findAll();

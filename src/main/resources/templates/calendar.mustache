@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+Welcome to our calendar
+<form method="post" action="calendar">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <input type="text" name="filter">
+        <button type="submit">Find</button>
+</form>
+<div>List of games</div>
+{{#games}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{name}}</span>
+        <span>{{description}}</span>
+        <span>{{system}}</span>
+        <span>{{discord}}</span>
+    </div>
+{{/games}}
+<a href="/registcalendar">Create your own game</a>
+</body>
+</html>

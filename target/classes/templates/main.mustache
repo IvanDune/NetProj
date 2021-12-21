@@ -1,7 +1,7 @@
 <html>
 <body>
 <div>
-    <form action="/logout}" method="post">
+    <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="submit" value="Sign Out"/>
     </form>
@@ -31,6 +31,8 @@
         <i>{{email}}</i>
     </div>
 {{/users}}
-
+<a href="/calendar">Here our calendar</a>
+<p><input type="datetime" name="created"></p>
+<p><input type="submit"></p>
 </body>
 </html>
