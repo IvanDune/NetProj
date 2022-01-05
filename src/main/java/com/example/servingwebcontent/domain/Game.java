@@ -7,6 +7,8 @@ import javax.persistence.*;
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //@SequenceGenerator(name="seq",sequenceName="my_seq")
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Column(name="id")
     private Integer id;
 
@@ -16,7 +18,6 @@ public class Game {
     @Column(name="description")
     private String description;
 
-    //@ElementCollection(targetClass = System.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @Column(name="system")
     private System system;

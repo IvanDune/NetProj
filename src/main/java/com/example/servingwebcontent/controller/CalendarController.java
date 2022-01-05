@@ -1,19 +1,27 @@
 package com.example.servingwebcontent.controller;
 
 import com.example.servingwebcontent.domain.Game;
+import com.example.servingwebcontent.domain.Role;
+import com.example.servingwebcontent.domain.System;
+import com.example.servingwebcontent.domain.User;
 import com.example.servingwebcontent.repos.GameRepos;
+import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collections;
 import java.util.Map;
 
 @Controller
 public class CalendarController {
     @Autowired
     private GameRepos gameRepos;
+
+    @Autowired
+    private UserRepos userRepos;
 
     @GetMapping("calendar")
     public String main(Map<String,Object> model){
@@ -34,9 +42,16 @@ public class CalendarController {
         return "calendar";
     }
 
-    @PostMapping("/calendar/add")
-    public String add(){
+    @PostMapping("/add")
+    public String addGame(@RequestParam String name, @RequestParam String description,
+                          @RequestParam System system, @RequestParam String discord, Map<String,Object> model){
 
-        return "calendar";
+        Iterable<Game> gameFromDb = gameRepos.findByName(name);
+        if(gameFromDb != null && gameFromDb.iterator().hasNext()){
+            model.put("game", "Game with a similar name already exists");
+            return"calendar";
+        }
+        gameRepos.save(new Game(name,description,system,discord));
+        return "redirect:/calendar";
     }
 }

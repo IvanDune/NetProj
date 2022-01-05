@@ -1,5 +1,6 @@
 package com.example.servingwebcontent.controller;
 
+import com.example.servingwebcontent.domain.Role;
 import com.example.servingwebcontent.domain.User;
 import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +39,16 @@ public class MainController {
     public String add(@RequestParam String login, @RequestParam String password,
                       @RequestParam String nickname, @RequestParam String email, Map<String, Object> model){
         User user = new User(login,password,nickname,email);
+        Iterable<User> userFromDb = userRepos.findByNickname(user.getNickname());
+
+        if (userFromDb != null && userFromDb.iterator().hasNext()){
+            model.put("message", "User exist");
+            return "main";
+        }
+        user.setActive(true);
+        user.setRoles(Collections.singleton(Role.USER));
         userRepos.save(user);
+
         Iterable<User> users = userRepos.findAll();
         model.put("users",users);
         return "main";

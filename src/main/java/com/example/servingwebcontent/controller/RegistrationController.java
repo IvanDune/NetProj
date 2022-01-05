@@ -16,9 +16,9 @@ public class RegistrationController {
     @Autowired
     private UserRepos userRepos;
 
-    @GetMapping("/registrtion")
+    @GetMapping("/registration")
     public String registration(){
-        return "registrattion";
+        return "registration";
     }
 
 
@@ -29,6 +29,7 @@ public class RegistrationController {
             model.put("user", "User exist");
             return "registration";
         }
+        user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepos.save(user);
         return "redirect:/login";
