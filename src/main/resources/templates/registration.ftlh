@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>Spring Security Example </title>
-</head>
-<body>
+<#import "parts/common.ftlh" as c>
+<@c.page>
 Add new User
-{{#user}}
-    {{user}}
-{{/user}}
+${user!""}
 <form action="/registration" method="post">
     <div><label> User Name : <input type="text" name="login"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <div><label> Nickname: <input type="test" name="nickname"/> </label></div>
     <div><label> Email: <input type="text" name="email"/> </label></div>
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <div><input type="submit" value="Sign In"/></div>
 </form>
-</body>
-</html>
+</@c.page>
+
+<!-- В видео использовался макрос для логина и регистрации.
+ У меня в регистрации на 2 поля больше. Что делать?-->

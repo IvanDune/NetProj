@@ -67,4 +67,8 @@ public class Game {
     public void setDiscord(String discord) {
         this.discord = discord;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

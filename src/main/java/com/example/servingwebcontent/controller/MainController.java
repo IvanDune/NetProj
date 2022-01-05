@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -29,9 +27,16 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(Map<String, Object> model){
+    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model){
         Iterable<User> users = userRepos.findAll();
-        model.put("users",users);
+        if (filter != null && !filter.isEmpty()){
+            users = userRepos.findByNickname(filter);
+        } else{
+            users = userRepos.findAll();
+        }
+        model.addAttribute("users", users);
+        model.addAttribute("filter", filter);
+
         return "main";
     }
 
@@ -53,16 +58,5 @@ public class MainController {
         model.put("users",users);
         return "main";
     }
-    @PostMapping("/filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model){
-        Iterable<User> users;
-        if (filter != null && !filter.isEmpty()){
-            users = userRepos.findByNickname(filter);
-        } else{
-            users = userRepos.findAll();
-        }
 
-        model.put("users", users);
-        return "main";
-    }
 }
