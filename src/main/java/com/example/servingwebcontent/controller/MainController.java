@@ -43,6 +43,7 @@ public class MainController {
     @PostMapping("/main")
     public String add(@RequestParam String login, @RequestParam String password,
                       @RequestParam String nickname, @RequestParam String email, Map<String, Object> model){
+
         User user = new User(login,password,nickname,email);
         Iterable<User> userFromDb = userRepos.findByNickname(user.getNickname());
 
@@ -50,6 +51,7 @@ public class MainController {
             model.put("message", "User exist");
             return "main";
         }
+
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepos.save(user);

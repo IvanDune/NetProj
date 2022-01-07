@@ -1,6 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <#import "parts/login.ftlh" as l>
-
+<h1>Main page</h1>
 <@c.page>
 <div>
     <@l.logout/>

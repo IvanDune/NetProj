@@ -4,7 +4,7 @@
 
 </head>
 <body>
-Welcome to our calendar
+<h1>Welcome to our calendar</h1>
 <form method="post" action="calendar">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <input type="text" name="filter">
@@ -18,6 +18,7 @@ Welcome to our calendar
         <span>${game.description}</span>
         <span>${game.system}</span>
         <span>${game.discord}</span>
+        <span>${game.dateTime}</span>
     </div>
 </#list>
 
@@ -26,8 +27,7 @@ Welcome to our calendar
 Add new Game
 ${game!""}
 
-<form action="add" method="post">
-    <input type="hidden" name="_csrf" value="${_csrf.token}$"/>
+<form action="/add" method="post">
     <div><label> Game Name : <input type="text" name="name"/> </label></div>
     <div><label> Description: <input type="text" name="description"/> </label></div>
     <div><label> System: <select name="system">
@@ -36,6 +36,7 @@ ${game!""}
         <option>CTHULHU</option>
     </select> </label></div>
     <div><label> Discord: <input type="text" name="discord"/> </label></div>
+    <div><label> Date: <input type="text" name="dateTime"/> </label></div>
 
     <div><input type="submit" value="Create"/></div>
 

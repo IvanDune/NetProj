@@ -1,14 +1,13 @@
 package com.example.servingwebcontent.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name ="game", schema = "public")
 @Entity
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@SequenceGenerator(name="seq",sequenceName="my_seq")
-    //@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Column(name="id")
     private Integer id;
 
@@ -25,15 +24,27 @@ public class Game {
     @Column(name="discord")
     private String discord;
 
+    @Column(name="dt")
+    private Date dateTime;
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
     public Game(){
 
     }
 
-    public Game(String name, String description, System system, String discord) {
+    public Game(String name, String description, System system, String discord, Date dateTime) {
         this.name = name;
         this.description = description;
         this.system = system;
         this.discord = discord;
+        this.dateTime = dateTime;
     }
 
     public String getName() {
