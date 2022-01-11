@@ -3,6 +3,24 @@
 
 <@c.page>
 
+<div>
+    <form method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <input type="text" name="login" placeholder="Enter user's login"/>
+        <input type="text" name="password" placeholder="Enter user's password"/>
+        <input type="text" name="nickname" placeholder="Enter user's nickname"/>
+        <input type="text" name="email" placeholder="Enter user's email"/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<form method="get" >
+    <input type="text" name="filter" value="${filter}" placeholder="Enter user's nickname">
+    <button type="submit">Find</button>
+</form>
+
+<div>List of users</div>
+${message!""}
     <table>
         <thead>
         <tr>
@@ -31,8 +49,7 @@
         </tbody>
     </table>
 
-    <p>
-        <a href="/calendar">Here our calendar</a>
+    <a href="/main">Here our main page</a>
 
 </@c.page>
 

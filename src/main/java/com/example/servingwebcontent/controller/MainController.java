@@ -27,16 +27,7 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model){
-        Iterable<User> users = userRepos.findAll();
-        if (filter != null && !filter.isEmpty()){
-            users = userRepos.findByNickname(filter);
-        } else{
-            users = userRepos.findAll();
-        }
-        model.addAttribute("users", users);
-        model.addAttribute("filter", filter);
-
+    public String main(){
         return "main";
     }
 

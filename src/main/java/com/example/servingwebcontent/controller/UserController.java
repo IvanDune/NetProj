@@ -17,14 +17,22 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
-//@/PreAuthorize("hasAuthority('ADMIN')")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
     private UserRepos userRepos;
 
     @GetMapping
-    public String userList(Model model){
-        model.addAttribute("users", userRepos.findAll());
+    public String filter(@RequestParam(required = false, defaultValue = "") String filter, Model model){
+        Iterable<User> users = userRepos.findAll();
+        if (filter != null && !filter.isEmpty()){
+            users = userRepos.findByNickname(filter);
+        } else{
+            users = userRepos.findAll();
+        }
+        model.addAttribute("users", users);
+        model.addAttribute("filter", filter);
+
         return "userList";
     }
 
@@ -36,6 +44,27 @@ public class UserController {
     }
 
     @PostMapping
+    public String add(@RequestParam String login, @RequestParam String password,
+                      @RequestParam String nickname, @RequestParam String email, Model model){
+
+        User user = new User(login,password,nickname,email);
+        Iterable<User> userFromDb = userRepos.findByNickname(user.getNickname());//Заменить на поиск по уникальному логину
+
+        if (userFromDb != null && userFromDb.iterator().hasNext()){
+            model.addAttribute("message", "User exist");
+            return "redirect:/user";//Ошбика в возвращении страницы
+        }
+
+        user.setActive(true);
+        user.setRoles(Collections.singleton(Role.USER));
+        userRepos.save(user);
+
+        Iterable<User> users = userRepos.findAll();
+        model.addAttribute("users",users);
+        return "redirect:/user";
+    }
+
+    @PostMapping("{user}")
     public String userSave(
             @RequestParam String login,
             @RequestParam Map<String, String> form,

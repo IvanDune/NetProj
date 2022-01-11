@@ -55,7 +55,7 @@ public class CalendarController {
             return"calendar";
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date2=null;
         try {
             date2 = dateFormat.parse(dateTime);

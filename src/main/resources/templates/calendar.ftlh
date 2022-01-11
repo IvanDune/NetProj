@@ -28,6 +28,7 @@ Add new Game
 ${game!""}
 
 <form action="/add" method="post">
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <div><label> Game Name : <input type="text" name="name"/> </label></div>
     <div><label> Description: <input type="text" name="description"/> </label></div>
     <div><label> System: <select name="system">
@@ -36,10 +37,11 @@ ${game!""}
         <option>CTHULHU</option>
     </select> </label></div>
     <div><label> Discord: <input type="text" name="discord"/> </label></div>
-    <div><label> Date: <input type="text" name="dateTime"/> </label></div>
+    <div><label> Date: <input type="date" name="dateTime"/> </label></div>
 
     <div><input type="submit" value="Create"/></div>
 
 </form>
+<a href="/main">Here our main page</a>
 </body>
 </html>
