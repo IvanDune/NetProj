@@ -26,7 +26,7 @@ public class UserController {
     public String filter(@RequestParam(required = false, defaultValue = "") String filter, Model model){
         Iterable<User> users = userRepos.findAll();
         if (filter != null && !filter.isEmpty()){
-            users = userRepos.findByNickname(filter);
+            users = userRepos.findByLogin(filter);
         } else{
             users = userRepos.findAll();
         }
@@ -48,7 +48,7 @@ public class UserController {
                       @RequestParam String nickname, @RequestParam String email, Model model){
 
         User user = new User(login,password,nickname,email);
-        Iterable<User> userFromDb = userRepos.findByNickname(user.getNickname());//Заменить на поиск по уникальному логину
+        Iterable<User> userFromDb = userRepos.findByLogin(user.getLogin());//Заменить на поиск по уникальному логину
 
         if (userFromDb != null && userFromDb.iterator().hasNext()){
             model.addAttribute("message", "User exist");

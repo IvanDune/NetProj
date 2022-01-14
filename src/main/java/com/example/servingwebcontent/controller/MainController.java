@@ -36,7 +36,7 @@ public class MainController {
                       @RequestParam String nickname, @RequestParam String email, Map<String, Object> model){
 
         User user = new User(login,password,nickname,email);
-        Iterable<User> userFromDb = userRepos.findByNickname(user.getNickname());
+        Iterable<User> userFromDb = userRepos.findByLogin(user.getLogin());
 
         if (userFromDb != null && userFromDb.iterator().hasNext()){
             model.put("message", "User exist");

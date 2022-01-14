@@ -1,5 +1,7 @@
 package com.example.servingwebcontent.config;
 
+import com.example.servingwebcontent.repos.UserRepos;
+import com.example.servingwebcontent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +24,9 @@ import java.net.DatagramSocket;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
-    private DataSource dataSource;
+    private UserService userService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -42,10 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery("select login, password, active from \"user\" where login=?")
-                .authoritiesByUsernameQuery("select u.login, ur.roles from \"user\" u inner join user_role ur on u.id = ur.user_id where u.login=?");
+        auth.userDetailsService(userService)
+                .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 }
+/*.usersByUsernameQuery("select login, password, active from \"user\" where login=?")
+                .authoritiesByUsernameQuery("select u.login, ur.roles from \"user\"
+                u inner join user_role ur on u.id = ur.user_id where u.login=?");*/

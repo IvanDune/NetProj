@@ -1,10 +1,14 @@
 package com.example.servingwebcontent.domain;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Table(name="user", schema = "public")
 @Entity
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,11 +30,21 @@ public class User {
     @Column(name="active")
     private Boolean active;
 
-    @Column(name="role")
+    @Column(name="roles")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    public User() {
+    }
+
+    public User(String login, String password, String nickname, String email) {
+        this.login = login;
+        this.password = password;
+        this.nickname = nickname;
+        this.email = email;
+    }
 
     public Boolean isActive() {
         return active;
@@ -48,18 +62,6 @@ public class User {
         this.roles = roles;
     }
 
-
-
-    public User() {
-    }
-
-    public User(String login, String password, String nickname, String email) {
-        this.login = login;
-        this.password = password;
-        this.nickname = nickname;
-        this.email = email;
-    }
-
     public Long getId() {
         return id;
     }
@@ -74,10 +76,6 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {
@@ -99,4 +97,42 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isActive();
+    }
+
+
 }

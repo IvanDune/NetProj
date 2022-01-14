@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public interface UserRepos extends JpaRepository<User, Long> {
-    Iterable<User> findByNickname(String nickname);
+    Iterable<User> findByLogin(String login);
 
 
 }

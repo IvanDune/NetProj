@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
+<#import "parts/common.ftlh" as c>
+<#import "parts/login.ftlh" as l>
 
-</head>
-<body>
+<@c.page>
+    <div>
+        <@l.logout/>
+    </div>
 <h1>Welcome to our calendar</h1>
 <form method="post" action="calendar">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -43,5 +44,4 @@ ${game!""}
 
 </form>
 <a href="/main">Here our main page</a>
-</body>
-</html>
+</@c.page>
