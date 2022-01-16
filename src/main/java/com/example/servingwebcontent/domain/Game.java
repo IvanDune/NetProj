@@ -24,27 +24,28 @@ public class Game {
     @Column(name="discord")
     private String discord;
 
-    @Column(name="dt")
-    private Date dateTime;
+    @Column(name="dateTime")
+    private Date date;
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Game(){
 
     }
 
-    public Game(String name, String description, System system, String discord, Date dateTime) {
+    public Game(String name, String description, System system, String discord, Date date) {
         this.name = name;
         this.description = description;
         this.system = system;
         this.discord = discord;
-        this.dateTime = dateTime;
+        this.date = date;
+
     }
 
     public String getName() {

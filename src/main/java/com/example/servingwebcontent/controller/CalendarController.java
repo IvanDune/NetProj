@@ -34,7 +34,9 @@ public class CalendarController {
     }
 
     @PostMapping("/calendar")
-    public String filter(@RequestParam String filter, Map<String,Object> model){
+    public String filter(
+            @RequestParam(defaultValue = "") String filter,
+            Map<String,Object> model){
         Iterable<Game> games;
         if(filter != null && !filter.isEmpty()){
             games = gameRepos.findByName(filter);
@@ -42,25 +44,29 @@ public class CalendarController {
             games = gameRepos.findAll();
         }
         model.put("games", games);
+        model.put("filter", filter);
         return "calendar";
     }
 
     @PostMapping("/add")
     public String addGame(@RequestParam String name, @RequestParam String description,
-                          @RequestParam System system, @RequestParam String discord, @RequestParam String dateTime, Map<String,Object> model){
+                          @RequestParam System system, @RequestParam String discord, @RequestParam String date, @RequestParam String time, Map<String,Object> model){
 
         Iterable<Game> gameFromDb = gameRepos.findByName(name);
+        Iterable<Game> games = gameRepos.findAll();
         if(gameFromDb != null && gameFromDb.iterator().hasNext()){
-            model.put("game", "Game with a similar name already exists");
+            model.put("message", "Game with a similar name already exists");
+            model.put("games", games);
             return"calendar";
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date2=null;
         try {
-            date2 = dateFormat.parse(dateTime);
+            date2 = dateFormat.parse(date+" "+time);
         } catch (ParseException e) {
-            model.put("game", "Inappropriate date format");
+            model.put("message", "Inappropriate date format");
+            model.put("games", games);
             return"calendar";
         }
         gameRepos.save(new Game(name,description,system,discord,date2));

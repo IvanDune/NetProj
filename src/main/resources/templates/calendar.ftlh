@@ -6,12 +6,14 @@
         <@l.logout/>
     </div>
 <h1>Welcome to our calendar</h1>
+    ${message!""}
 <form method="post" action="calendar">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <input type="text" name="filter">
+    <input type="text" name="filter" value="${filter!""}">
         <button type="submit">Find</button>
 </form>
 <div>List of games</div>
+
 <#list games as game>
     <div>
         <b>${game.id}</b>
@@ -19,14 +21,14 @@
         <span>${game.description}</span>
         <span>${game.system}</span>
         <span>${game.discord}</span>
-        <span>${game.dateTime}</span>
+        <span>${game.date}</span>
     </div>
 </#list>
 
 <p></p>
 
 Add new Game
-${game!""}
+
 
 <form action="/add" method="post">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -38,7 +40,8 @@ ${game!""}
         <option>CTHULHU</option>
     </select> </label></div>
     <div><label> Discord: <input type="text" name="discord"/> </label></div>
-    <div><label> Date: <input type="date" name="dateTime"/> </label></div>
+    <div><label> Date: <input type="date" name="date"/> </label></div>
+    <div><label> Time: <input type="time" name="time"/> </label></div>
 
     <div><input type="submit" value="Create"/></div>
 
