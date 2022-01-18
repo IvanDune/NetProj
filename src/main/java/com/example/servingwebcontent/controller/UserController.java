@@ -24,13 +24,13 @@ public class UserController {
 
     @GetMapping
     public String filter(@RequestParam(required = false, defaultValue = "") String filter, Model model){
-        Iterable<User> users = userRepos.findAll();
+        User users;
         if (filter != null && !filter.isEmpty()){
             users = userRepos.findByLogin(filter);
+            model.addAttribute("users", users);
         } else{
-            users = userRepos.findAll();
+            model.addAttribute("users", userRepos.findAll());
         }
-        model.addAttribute("users", users);
         model.addAttribute("filter", filter);
 
         return "userList";
@@ -48,9 +48,9 @@ public class UserController {
                       @RequestParam String nickname, @RequestParam String email, Model model){
 
         User user = new User(login,password,nickname,email);
-        Iterable<User> userFromDb = userRepos.findByLogin(user.getLogin());//Заменить на поиск по уникальному логину
+        User userFromDb = userRepos.findByLogin(user.getLogin());//Заменить на поиск по уникальному логину
 
-        if (userFromDb != null && userFromDb.iterator().hasNext()){
+        if (userFromDb != null){
             model.addAttribute("message", "User exist");
             return "redirect:/user";//Ошбика в возвращении страницы
         }

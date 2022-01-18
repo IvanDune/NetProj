@@ -15,7 +15,7 @@
 </div>
 
 <form method="get" >
-    <input type="text" name="filter" value="${filter}" placeholder="Enter user's nickname">
+    <input type="text" name="filter" value="${filter}" placeholder="Enter user's login">
     <button type="submit">Find</button>
 </form>
 

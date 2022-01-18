@@ -8,22 +8,72 @@
 
     <div><h2>Имя первого мастера</h2></div>
     <div><h4>Описание первого мастера</h4></div>
-    <form method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <div><input type="text" name="mess" placeholder="Enter your message"/></div>
-        <button type="submit">Send</button>
-    </form>
+
     <#list messages as message>
         <div>
-        <span>${message.id}</span>
         <span>${message.text}</span>
         <strong>${message.getAuthorName()}</strong>
         </div>
     </#list>
 
+    <form method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <div><input type="text" name="mess" placeholder="Enter your message"/></div>
+        <button type="submit">Send</button>
+    </form>
+
+    <div><h2>Имя второго мастера</h2></div>
+    <div><h4>Описание второго мастера</h4></div>
+
+    <#list messages as message>
+        <div>
+            <span>${message.text}</span>
+            <strong>${message.getAuthorName()}</strong>
+        </div>
+    </#list>
+
+    <form method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <div><input type="text" name="mess" placeholder="Enter your message"/></div>
+        <button type="submit">Send</button>
+    </form>
+
+    <div><h2>Имя третьего мастера</h2></div>
+    <div><h4>Описание третьего мастера</h4></div>
+
+    <#list messages as message>
+        <div>
+            <span>${message.text}</span>
+            <strong>${message.getAuthorName()}</strong>
+        </div>
+    </#list>
+
+    <form method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <div><input type="text" name="mess" placeholder="Enter your message"/></div>
+        <button type="submit">Send</button>
+    </form>
+
+    <div><h2>Имя четвертого мастера</h2></div>
+    <div><h4>Описание четвертого мастера</h4></div>
+
+    <#list messages as message>
+        <div>
+            <span>${message.text}</span>
+            <strong>${message.getAuthorName()}</strong>
+        </div>
+    </#list>
+
+    <form method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <div><input type="text" name="mess" placeholder="Enter your message"/></div>
+        <button type="submit">Send</button>
+    </form>
 
     <a href="/main">Here our main page</a>
-    <p><a href="/calendar">Here our calendar</a></p>
+    <p>
+        <a href="/calendar">Here our calendar</a>
+    </p>
 
 
 </@c.page>

@@ -24,8 +24,8 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model ){
-        Iterable<User> userFromDb = userRepos.findByLogin(user.getLogin());
-        if (userFromDb != null && userFromDb.iterator().hasNext()){
+        User userFromDb = userRepos.findByLogin(user.getLogin());
+        if (userFromDb != null){
             model.put("user", "User exist");
             return "registration";
         }
