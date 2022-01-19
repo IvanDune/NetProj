@@ -2,6 +2,8 @@ package com.example.servingwebcontent.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Table(name ="game", schema = "public")
 @Entity
@@ -9,7 +11,7 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private Integer id;
+    private Long id;
 
     @Column(name="name")
     private String name;
@@ -27,13 +29,10 @@ public class Game {
     @Column(name="dateTime")
     private Date date;
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+
+
+
 
     public Game(){
 
@@ -46,6 +45,13 @@ public class Game {
         this.discord = discord;
         this.date = date;
 
+    }
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getName() {
@@ -80,7 +86,11 @@ public class Game {
         this.discord = discord;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

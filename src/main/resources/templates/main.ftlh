@@ -5,10 +5,11 @@
     <@l.logout/>
 </div>
     <h1>Main page</h1>
+
     <p><a href="/user">Users</a></p>
 
     <p><a href="/calendar">Here our calendar</a></p>
-    <p><a href="/privateOffice">Check your private office</a></p>
+    <p><a href="/profile">Check your private office</a></p>
     <p><a href="/master">Masters</a></p>
 
     <h5>Check our social networks</h5>

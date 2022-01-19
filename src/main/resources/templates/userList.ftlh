@@ -10,6 +10,7 @@
         <input type="text" name="password" placeholder="Enter user's password"/>
         <input type="text" name="nickname" placeholder="Enter user's nickname"/>
         <input type="text" name="email" placeholder="Enter user's email"/>
+
         <button type="submit">Submit</button>
     </form>
 </div>
