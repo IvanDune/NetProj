@@ -49,7 +49,7 @@ public class UserService implements UserDetailsService {
         userRepos.save(user);
     }
 
-    public void updateProfile(User user, String password, String nickname, String email) {
+    public void updateProfile(User user, String nickname, String email) {
         String userEmail = user.getEmail();
 
 
@@ -60,7 +60,7 @@ public class UserService implements UserDetailsService {
             user.setEmail(email);
 
         user.setNickname(nickname);
-        user.setPassword(password);
+        userRepos.save(user);
 
     }
 }

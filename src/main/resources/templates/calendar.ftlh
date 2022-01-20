@@ -7,11 +7,13 @@
     </div>
 <h1>Welcome to our calendar</h1>
     ${message!""}
+
 <form method="post" action="calendar">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <input type="text" name="filter" value="${filter!""}">
-        <button type="submit">Find</button>
+    <button type="submit">Find</button>
 </form>
+
 <div>List of games</div>
 
 <#list games as game>

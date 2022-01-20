@@ -4,6 +4,7 @@ import com.example.servingwebcontent.domain.Role;
 import com.example.servingwebcontent.domain.User;
 import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +28,9 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(){
-        return "main";
-    }
+    public String main(@AuthenticationPrincipal User user, Model model){
+        model.addAttribute("userChannel", user);
+        return "main"; }
 
     @PostMapping("/main")
     public String add(@RequestParam String login, @RequestParam String password,

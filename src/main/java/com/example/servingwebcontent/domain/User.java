@@ -37,6 +37,14 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    /*@ManyToMany
+    @JoinTable(
+            name = "user_sub",
+            joinColumns = { @JoinColumn(name ="user_id")},
+            inverseJoinColumns = { @JoinColumn(name = "game_id")}
+    )
+    private Set<Game> subscriptions = new HashSet<>();*/
+
     public User() {
     }
 
@@ -46,6 +54,14 @@ public class User implements UserDetails {
         this.nickname = nickname;
         this.email = email;
     }
+
+    /*public Set<Game> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(Set<Game> subscriptions) {
+        this.subscriptions = subscriptions;
+    }*/
 
     public Boolean isActive() {
         return active;

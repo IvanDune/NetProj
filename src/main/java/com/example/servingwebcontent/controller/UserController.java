@@ -22,11 +22,12 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
-    public String filter(@RequestParam(required = false, defaultValue = "") String filter, Model model){
-        UserDetails users;
+    public String filter(
+            @RequestParam(required = false, defaultValue = "") String filter,
+            Model model){
+
         if (filter != null && !filter.isEmpty()){
-            users = userService.loadUserByUsername(filter);
-            model.addAttribute("users", users);
+            model.addAttribute("users", userService.loadUserByUsername(filter));
         } else{
             model.addAttribute("users", userService.findAll());
         }
@@ -52,17 +53,17 @@ public class UserController {
 
         User user = new User(login,password,nickname,email);
         UserDetails userFromDb = userService.loadUserByUsername(user.getLogin());
+        model.addAttribute("users",userService.findAll());
 
         if (userFromDb != null){
             model.addAttribute("message", "User exist");
-            return "redirect:/user";
+            return "redirect:/user"; // Не выводится сообщение при одинаковых Логинах
         }
 
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userService.saveUser(user);
 
-        model.addAttribute("users",userService.findAll());
         return "redirect:/user";
     }
 
@@ -77,8 +78,9 @@ public class UserController {
         return "redirect:/user";
     }
 
-    @GetMapping("/profile")
+    @GetMapping("profile")
     public String getProfile(Model model, @AuthenticationPrincipal User user){
+        model.addAttribute("user", user);
         model.addAttribute("nickname", user.getNickname());
         model.addAttribute("email", user.getEmail());
 
@@ -88,12 +90,11 @@ public class UserController {
     @PostMapping("profile")
     public String updateProfile(
             @AuthenticationPrincipal User user,
-            @RequestParam String password,
             @RequestParam String nickname,
             @RequestParam String email
     ){
-        userService.updateProfile(user, password, nickname, email);
-        return "redirect:/user/profile";
+        userService.updateProfile(user, nickname, email);
+        return "redirect:/main";
     }
 
 }
