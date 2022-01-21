@@ -29,13 +29,13 @@ public class Game {
     @Column(name="dateTime")
     private Date date;
 
-    /*@ManyToMany
+    @ManyToMany
     @JoinTable(
             name = "user_sub",
             joinColumns = { @JoinColumn(name ="game_id")},
             inverseJoinColumns = { @JoinColumn(name = "user_id")}
     )
-    private Set<User> subscribers = new HashSet<>();*/
+    private Set<User> subscribers = new HashSet<>();
 
 
 
@@ -53,13 +53,13 @@ public class Game {
 
     }
 
-   /* public Set<User> getSubscribers() {
+    public Set<User> getSubscribers() {
         return subscribers;
     }
 
     public void setSubscribers(Set<User> subscribers) {
         this.subscribers = subscribers;
-    }*/
+    }
 
     public Date getDate() {
         return date;

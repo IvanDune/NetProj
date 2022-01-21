@@ -30,17 +30,26 @@ public class UserService implements UserDetailsService {
         return userRepos.findAll();
     }
 
-    public void saveChangedUser(User user, String login, Map<String, String> form){
-        user.setLogin(login);
+    public void saveChangedUser(User user, Map<String, String> form){
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
 
         user.getRoles().clear();
         for(String key : form.keySet()){
-            if(roles.contains(key)){
-                user.getRoles().add(Role.valueOf(key));
+            if (key.equals("ADMIN")){
+                user.getRoles().add(Role.valueOf("ADMIN"));
+                user.getRoles().add(Role.valueOf("MASTER"));
             }
+            if (key.equals("MASTER")){
+                user.getRoles().add(Role.valueOf("MASTER"));
+            }
+            if (key.equals("USER")){
+                user.getRoles().add(Role.valueOf("USER"));
+            }
+//            if(roles.contains(key)){
+//                user.getRoles().add(Role.valueOf(key));
+//            }
         }
         userRepos.save(user);
     }

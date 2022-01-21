@@ -10,15 +10,26 @@ public class Message {
 
     private String text;
 
+    private Integer num;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
 
     public Message() {
     }
-    public Message(String text, User author) {
+    public Message(String text, User author, Integer number) {
         this.author=author;
         this.text = text;
+        this.num=number;
+    }
+
+    public Integer getNumber() {
+        return num;
+    }
+
+    public void setNumber(Integer number) {
+        this.num = number;
     }
 
     public String getAuthorName(){

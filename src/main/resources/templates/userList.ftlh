@@ -3,20 +3,9 @@
 
 <@c.page>
 
-<div>
-    <form method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <input type="text" name="login" placeholder="Enter user's login"/>
-        <input type="text" name="password" placeholder="Enter user's password"/>
-        <input type="text" name="nickname" placeholder="Enter user's nickname"/>
-        <input type="text" name="email" placeholder="Enter user's email"/>
-
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
-<form method="get" >
-    <input type="text" name="filter" value="${filter}" placeholder="Enter user's login">
+<form method="post" action="user" >
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <input type="text" name="filter" value="${filter!""}" placeholder="Enter user's login">
     <button type="submit">Find</button>
 </form>
 
@@ -43,6 +32,7 @@ ${message!""}
                 <td>${user.email}</td>
                 <td><#list user.roles as role>${role}<#sep>, </#list></td>
                 <td><a href="/user/${user.id}">edit</a></td>
+
             </tr>
         <#else>
             No users

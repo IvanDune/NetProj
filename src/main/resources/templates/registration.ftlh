@@ -1,7 +1,7 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
 Add new User
-${user!""}
+<br>${user!""}
 <form action="/registration" method="post">
     <div><label> User Name : <input type="text" name="login"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>

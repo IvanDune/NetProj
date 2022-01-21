@@ -11,34 +11,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping
-    public String filter(
-            @RequestParam(required = false, defaultValue = "") String filter,
-            Model model){
-
-        if (filter != null && !filter.isEmpty()){
-            model.addAttribute("users", userService.loadUserByUsername(filter));
-        } else{
-            model.addAttribute("users", userService.findAll());
-        }
-        model.addAttribute("roles", Role.values());
-        model.addAttribute("filter", filter);
-
-        return "userList";
+    @GetMapping("/user")
+    public String main(Model model){
+        model.addAttribute("users", userService.findAll());
+            return "userList";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("{user}")
+    @GetMapping("/user/{user}")
     public String userEditForm(@PathVariable User user, Model model){
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
@@ -46,39 +37,36 @@ public class UserController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping
-    public String add(@RequestParam String login, @RequestParam String password,
-                      @RequestParam String nickname, @RequestParam String email,
-                      @RequestParam Map<String, String> form, Model model){
+    @PostMapping("/user")
+    public String filter(
+        @RequestParam(defaultValue = "") String filter,
+        Model model){
 
-        User user = new User(login,password,nickname,email);
-        UserDetails userFromDb = userService.loadUserByUsername(user.getLogin());
-        model.addAttribute("users",userService.findAll());
+            if (filter != null && !filter.isEmpty()){
+                List<UserDetails> userDetailsList = new ArrayList<>();
+                userDetailsList.add(userService.loadUserByUsername(filter));
+                model.addAttribute("users", userDetailsList);
+            } else{
+                model.addAttribute("users", userService.findAll());
+            }
+            model.addAttribute("roles", Role.values());
+            model.addAttribute("filter", filter);
 
-        if (userFromDb != null){
-            model.addAttribute("message", "User exist");
-            return "redirect:/user"; // Не выводится сообщение при одинаковых Логинах
-        }
-
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
-        userService.saveUser(user);
-
-        return "redirect:/user";
+            return "userList";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping("{user}")
+    @PostMapping("/user/{user}")
     public String userSave(
-            @RequestParam String login,
             @RequestParam Map<String, String> form,
-            @RequestParam("userId") User user){
+            @RequestParam("userId") User user,
+            Model model){
 
-        userService.saveChangedUser(user, login, form);
+        userService.saveChangedUser(user, form);
         return "redirect:/user";
     }
 
-    @GetMapping("profile")
+    @GetMapping("/user/profile")
     public String getProfile(Model model, @AuthenticationPrincipal User user){
         model.addAttribute("user", user);
         model.addAttribute("nickname", user.getNickname());
@@ -87,7 +75,7 @@ public class UserController {
         return "profile";
     }
 
-    @PostMapping("profile")
+    @PostMapping("/user/profile")
     public String updateProfile(
             @AuthenticationPrincipal User user,
             @RequestParam String nickname,

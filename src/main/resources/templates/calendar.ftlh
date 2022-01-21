@@ -16,19 +16,34 @@
 
 <div>List of games</div>
 
-<#list games as game>
-    <div>
-        <b>${game.id}</b>
-        <span>${game.name}</span>
-        <span>${game.description}</span>
-        <span>${game.system}</span>
-        <span>${game.discord}</span>
-        <span>${game.date}</span>
-    </div>
-</#list>
+    <table >
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>System</th>
+            <th>Discord</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list games as game>
+            <tr>
+                <td style="text-align: center">${game.name}</td>
+                <td style="text-align: center">${game.description}</td>
+                <td style="text-align: center">${game.system}</td>
+                <td style="text-align: center">${game.discord}</td>
+                <td style="text-align: center">${game.date}</td>
+            </tr>
+        <#else>
+            No games
+        </#list>
+        </tbody>
+    </table>
 
-<p></p>
-
+<br>
+    <#list userChannel.roles as role>
+        <#if role  = "MASTER">
 Add new Game
 
 
@@ -46,6 +61,8 @@ Add new Game
     <div><label> Time: <input type="time" name="time"/> </label></div>
 
     <div><input type="submit" value="Create"/></div>
+        </#if>
+    </#list>
 
 </form>
 <a href="/main">Here our main page</a>

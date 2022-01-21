@@ -28,8 +28,9 @@ public class MasterController {
     @PostMapping
     public String add(
             @AuthenticationPrincipal User user,
-            @RequestParam String mess, Model model){
-        Message message = new Message(mess,user);
+            @RequestParam String mess,
+            @RequestParam Integer number, Model model){
+        Message message = new Message(mess,user,number);
         messageRepos.save(message);
         Iterable<Message> messages = messageRepos.findAll();
         model.addAttribute("messages",messages);

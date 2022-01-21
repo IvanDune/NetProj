@@ -9,7 +9,12 @@
     <h4>Hello, ${userChannel.nickname}</h4>
 
 
-        <p><a href="/user">Users</a></p>
+    <#list userChannel.roles as role>
+        <#if role = "ADMIN">
+            <p><a href="/user">Users</a></p>
+        </#if>
+    </#list>
+
 
 
     <p><a href="/calendar">Here our calendar</a></p>
