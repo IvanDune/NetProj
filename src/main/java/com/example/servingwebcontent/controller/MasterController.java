@@ -36,4 +36,5 @@ public class MasterController {
         model.addAttribute("messages",messages);
         return "master";
     }
+
 }

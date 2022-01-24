@@ -5,8 +5,10 @@
 
 <form method="post" action="user" >
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <input type="text" name="filter" value="${filter!""}" placeholder="Enter user's login">
-    <button type="submit">Find</button>
+    <div class="col-sm-5">
+    <input type="text" name="filter" class="form-control" value="${filter!""}" placeholder="Enter user's login">
+    </div>
+    <button type="submit" class="btn btn-primary ml-2 mt-2">Find</button>
 </form>
 
 <div>List of users</div>
@@ -39,8 +41,6 @@ ${message!""}
         </#list>
         </tbody>
     </table>
-
-    <a href="/main">Here our main page</a>
 
 </@c.page>
 

@@ -3,9 +3,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.*;
 
 @Table(name="user", schema = "public")
 @Entity
@@ -53,6 +52,10 @@ public class User implements UserDetails {
         this.password = password;
         this.nickname = nickname;
         this.email = email;
+    }
+
+    public boolean isAdmin(){
+        return roles.contains(Role.ADMIN);
     }
 
     public Set<Game> getSubscriptions() {
