@@ -12,13 +12,13 @@ public class Message {
 
     private Integer num;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User author;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id")
+    private String author;
 
     public Message() {
     }
-    public Message(String text, User author, Integer number) {
+    public Message(String text, String author, Integer number) {
         this.author=author;
         this.text = text;
         this.num=number;
@@ -32,14 +32,14 @@ public class Message {
         this.num = number;
     }
 
-    public String getAuthorName(){
-        return author!=null?author.getNickname():"none";
-    }
-    public User getAuthor() {
+//    public String getAuthorName(){
+//        return author!=null?author.getNickname():"none";
+//    }
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

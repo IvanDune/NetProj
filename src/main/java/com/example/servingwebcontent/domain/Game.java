@@ -29,7 +29,8 @@ public class Game {
     @Column(name="dateTime")
     private Date date;
 
-    @ManyToMany
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_sub",
             joinColumns = { @JoinColumn(name ="game_id")},
@@ -51,6 +52,10 @@ public class Game {
         this.discord = discord;
         this.date = date;
 
+    }
+
+    public Integer gamerValue(){
+        return getSubscribers().size();
     }
 
     public Set<User> getSubscribers() {

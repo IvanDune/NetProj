@@ -28,19 +28,32 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
+<#--            <th>Gamers</th>-->
             <th>System</th>
             <th>Discord</th>
             <th>Date</th>
+            <th>Registration</th>
         </tr>
         </thead>
         <tbody>
+
+<#--        style="text-align: center"-->
+
         <#list games as game>
             <tr>
                 <td style="text-align: center">${game.name}</td>
                 <td style="text-align: center">${game.description}</td>
+<#--                <td >${game.getSubscribers().size()}</td>-->
                 <td style="text-align: center">${game.system}</td>
                 <td style="text-align: center">${game.discord}</td>
                 <td style="text-align: center">${game.date}</td>
+                <td style="text-align: center">
+                    <form action="/note" method="post">
+                        <input type="hidden" name="game" value="${game.name}"/>
+                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                        <button type="submit" class="btn btn-primary ml-2 mt-2" name="regist">Click</button>
+                    </form>
+                    </td>
 
             </tr>
         <#else>
@@ -50,7 +63,6 @@
     </table>
 
 <br>
-<#--Появляется ошибка после испоьлзование фильтра календаря не залогированным пользователем-->
     <#list userChannel.roles as role>
         <#if role  = "MASTER">
 <h5>Add new game</h5>
@@ -62,7 +74,7 @@
 
         <div class="col-auto my-1">
             <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">System: </label>
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="system">
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="system" value="">
                 <option selected>Game</option>
                 <option>DUNGEONSANDDRAGONS</option>
                 <option>WARHAMMER</option>

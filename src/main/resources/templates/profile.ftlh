@@ -1,6 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
-
+<#--    <property name="hibernate.enable_lazy_load_no_trans" value="true"/>-->
     <h4>${user.nickname}, it's your profile </h4>
     <nav class="navbar navbar-dark bg-light col-sm-5">
         <div class="container-fluid">
@@ -21,6 +21,49 @@
         </div>
         </div>
     </nav>
+
+<#--    <#if games.size() != 0>-->
+
+    <table >
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+           <th>Gamers</th>
+            <th>System</th>
+            <th>Discord</th>
+            <th>Date</th>
+            <th>Registration</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <#--        style="text-align: center"-->
+
+        <#list games as game>
+            <tr>
+                <td style="text-align: center">${game.name}</td>
+                <td style="text-align: center">${game.description}</td>
+                <td >${game.gamerValue()}</td>
+                <td style="text-align: center">${game.system}</td>
+                <td style="text-align: center">${game.discord}</td>
+                <td style="text-align: center">${game.date}</td>
+                <td style="text-align: center">
+                    <form action="/unsub" method="post">
+                        <input type="hidden" name="game" value="${game.name}"/>
+                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                        <button type="submit" class="btn btn-primary ml-2 mt-2" name="unsub">Unsub</button>
+                    </form>
+                </td>
+
+            </tr>
+        <#else>
+            No games
+        </#list>
+        </tbody>
+    </table>
+
+<#--    </#if>-->
 
 
 
