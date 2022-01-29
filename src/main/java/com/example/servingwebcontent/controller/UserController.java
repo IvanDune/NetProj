@@ -79,7 +79,7 @@ public class UserController {
     public String getProfile(Model model, @AuthenticationPrincipal User user){
         User user1 = userRepos.findByLogin(user.getLogin());
         model.addAttribute("games", user1.getSubscriptions());
-        model.addAttribute("user", user);
+        model.addAttribute("user", user1);
         model.addAttribute("nickname", user.getNickname());
         model.addAttribute("email", user.getEmail());
 
@@ -112,10 +112,20 @@ public class UserController {
     public String updateProfile(
             @AuthenticationPrincipal User user,
             @RequestParam String nickname,
-            @RequestParam String email
+            @RequestParam String email,
+            Model model
     ){
+        if (nickname==""||email==""){
+            model.addAttribute("message","Fields cannot be empty");
+            User user1 = userRepos.findByLogin(user.getLogin());
+            model.addAttribute("games", user1.getSubscriptions());
+            model.addAttribute("user", user1);
+            model.addAttribute("nickname", user.getNickname());
+            model.addAttribute("email", user.getEmail());
+            return "profile";
+        }
         userService.updateProfile(user, nickname, email);
-        return "redirect:/main";
+        return "redirect:/";
     }
 
 }

@@ -1,6 +1,7 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
 <#--    <property name="hibernate.enable_lazy_load_no_trans" value="true"/>-->
+    <h3><font color="#dc143c">${message!""}</font></h3>
     <h4>${user.nickname}, it's your profile </h4>
     <nav class="navbar navbar-dark bg-light col-sm-5">
         <div class="container-fluid">
@@ -22,50 +23,43 @@
         </div>
     </nav>
 
-<#--    <#if games.size() != 0>-->
 
-    <table >
+    <#if user.gameValue()!=0>
+    <table class="table table-hover" >
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Description</th>
-           <th>Gamers</th>
-            <th>System</th>
-            <th>Discord</th>
-            <th>Date</th>
-            <th>Registration</th>
+            <th class="align-middle text-center">Name</th>
+            <th class="align-middle text-center">Description</th>
+            <th class="align-middle text-center">Gamers</th>
+            <th class="align-middle text-center">System</th>
+            <th class="align-middle text-center">Discord</th>
+            <th class="align-middle text-center">Date</th>
+            <th class="align-middle text-center">Registration</th>
         </tr>
         </thead>
         <tbody>
 
-        <#--        style="text-align: center"-->
+
 
         <#list games as game>
             <tr>
-                <td style="text-align: center">${game.name}</td>
-                <td style="text-align: center">${game.description}</td>
-                <td >${game.gamerValue()}</td>
-                <td style="text-align: center">${game.system}</td>
-                <td style="text-align: center">${game.discord}</td>
-                <td style="text-align: center">${game.date}</td>
-                <td style="text-align: center">
+                <td class="align-middle text-center">${game.name}</td>
+                <td class="align-middle text-center">${game.description}</td>
+                <td class="align-middle text-center">${game.gamerValue()}</td>
+                <td class="align-middle text-center">${game.system}</td>
+                <td class="align-middle text-center">${game.discord}</td>
+                <td class="align-middle text-center">${game.date}</td>
+                <td class="align-middle text-center">
                     <form action="/unsub" method="post">
                         <input type="hidden" name="game" value="${game.name}"/>
                         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                        <button type="submit" class="btn btn-primary ml-2 mt-2" name="unsub">Unsub</button>
+                        <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="unsub">Unsub</button>
                     </form>
                 </td>
-
             </tr>
-        <#else>
-            No games
         </#list>
         </tbody>
     </table>
-
-<#--    </#if>-->
-
-
-
+    </#if>
 
 </@c.page>

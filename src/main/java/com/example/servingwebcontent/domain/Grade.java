@@ -11,6 +11,8 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private Integer masterNumber;
+
     private Integer value = 0;
 
     private Double mean = 0d;
@@ -19,13 +21,27 @@ public class Grade {
 
     }
 
-//    public Grade(Integer number) {
-//        if (value != 0){
-//            double sum = value * mean + number;
-//            value++;
-//            mean=sum/value;
-//        }
-//    }
+    public Grade(Integer masterNumber, Integer num){
+        this.masterNumber=masterNumber;
+        value++;
+        mean = (double) num/value;
+    }
+
+    public void addGrade(Integer number) {
+        if (value != 0){
+            double sum = value * mean + number;
+            value++;
+            mean=sum/value;
+        }
+    }
+
+    public Integer getMasterNumber() {
+        return masterNumber;
+    }
+
+    public void setMasterNumber(Integer masterNumber) {
+        this.masterNumber = masterNumber;
+    }
 
     public Integer getValue() {
         return value;
@@ -35,11 +51,11 @@ public class Grade {
         this.value = value;
     }
 
-//    public Double getMean() {
-//        return mean;
-//    }
-//
-//    public void setMean(Double mean) {
-//        this.mean = mean;
-//    }
+    public Double getMean() {
+        return mean;
+    }
+
+    public void setMean(Double mean) {
+        this.mean = mean;
+    }
 }

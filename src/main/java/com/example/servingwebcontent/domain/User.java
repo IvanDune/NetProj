@@ -54,6 +54,10 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    public Integer gameValue(){
+        return getSubscriptions().size();
+    }
+
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }

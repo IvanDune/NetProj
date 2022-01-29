@@ -1,8 +1,9 @@
 <#include "security.ftlh">
 <#import "login.ftlh" as l>
 
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <a class="navbar-brand ml-5">DiceHead</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" >DiceHead</a>
 <#--    Отступ от левого края-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,9 +13,6 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/main">Main</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/calendar">Calendar</a>
@@ -31,9 +29,19 @@
             </li>
             </#if>
         </ul>
-
-        <div class="navbar-text">${name}</div>
-        <@l.logout />
-
     </div>
+
+    <form class="form-inline mr-2 my-lg-0 ">
+
+            <div class="navbar-text yx-3"><#if user??>${name}<#else>Please, login</#if></div>
+
+    </form>
+    <@l.logout/>
+
+<#--    <form class="form-inline mr-2 my-lg-0 ">-->
+<#--        <@l.logout/>-->
+<#--    </form>-->
+
+
+
 </nav>

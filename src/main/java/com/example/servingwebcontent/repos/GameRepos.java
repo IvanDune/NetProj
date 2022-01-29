@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GameRepos extends JpaRepository<Game, Long> {
     Game findByName(String name);
+
 }

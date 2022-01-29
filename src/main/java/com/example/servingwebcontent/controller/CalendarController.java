@@ -31,8 +31,11 @@ public class CalendarController {
     @GetMapping("calendar")
     public String main(@AuthenticationPrincipal User user, Model model){
         Iterable<Game> games = gameRepos.findAll();
+        Long gameSize = gameRepos.count();
+        model.addAttribute("gameSize", gameSize);
         model.addAttribute("userChannel",user);
         model.addAttribute("games", games);
+
         return "calendar";
     }
 
@@ -43,12 +46,19 @@ public class CalendarController {
             Model model){
         Game games;
         if(filter != null && !filter.isEmpty()){
-            List<Game> gameList = new ArrayList<>();
-            gameList.add(gameRepos.findByName(filter));
-            model.addAttribute("games", gameList);
+            if(gameRepos.findByName(filter)==null){
+                model.addAttribute("games", gameRepos.findAll());
+                model.addAttribute("message","No such game exists");
+            } else {
+                List<Game> gameList = new ArrayList<>();
+                gameList.add(gameRepos.findByName(filter));
+                model.addAttribute("games", gameList);
+            }
         } else {
             model.addAttribute("games", gameRepos.findAll());
         }
+        Long gameSize = gameRepos.count();
+        model.addAttribute("gameSize", gameSize);
         model.addAttribute("userChannel", userChannel);
         model.addAttribute("filter", filter);
         return "calendar";
@@ -67,17 +77,22 @@ public class CalendarController {
         Game gameFromDb = gameRepos.findByName(name);
         Iterable<Game> games = gameRepos.findAll();
 
+        model.addAttribute("games", games);
+        model.addAttribute("userChannel", userChannel);
+        Long gameSize = gameRepos.count();
+        model.addAttribute("gameSize", gameSize);
+
+        if(name==""){
+            model.addAttribute("message","Please, enter game name");
+            return "calendar";
+        }
         if(gameFromDb != null){
             model.addAttribute("message", "Game with a similar name already exists");
-            model.addAttribute("games", games);
-            model.addAttribute("userChannel", userChannel);
             return"calendar";
         }
 
-        if (system == null){
+        if (system == System.Game){
             model.addAttribute("message", "Please, enter game system");
-            model.addAttribute("games", games);
-            model.addAttribute("userChannel", userChannel);
             return"calendar";
         }
 
@@ -87,8 +102,6 @@ public class CalendarController {
             date2 = dateFormat.parse(date+" "+time);
         } catch (ParseException e) {
             model.addAttribute("message", "Inappropriate date format");
-            model.addAttribute("userChannel", userChannel);
-            model.addAttribute("games", games);
             return"calendar";
         }
         gameRepos.save(new Game(name,description,system,discord,date2));
@@ -100,29 +113,46 @@ public class CalendarController {
                                    @RequestParam String game,
                                    Model model){
         Iterable<Game> games = gameRepos.findAll();
+        Long gameSize = gameRepos.count();
+        model.addAttribute("gameSize", gameSize);
         model.addAttribute("userChannel",user);
         model.addAttribute("games", games);
 
-        Game game1 = gameRepos.findByName(game);
 
+        Game game1 = gameRepos.findByName(game);
+        if(game==""){
+            model.addAttribute("message","Please, enter game name");
+            return "/calendar";
+        }
         for (User usr : game1.getSubscribers()){
             if (usr.getLogin().equals(user.getLogin())){
                 model.addAttribute("message", "You are already registered to this game");
                 return "/calendar";
-
-        } else {
-                game1.getSubscribers().add(user);
-                //            user.getSubscriptions().add(game1);
-                model.addAttribute("message", "Have a good game");
             }
         }
-        if (game1.getSubscribers().size()==0){
-            game1.getSubscribers().add(user);
-            model.addAttribute("message", "Have a good game");
-        }
+
+        game1.getSubscribers().add(user);
+        model.addAttribute("message", "Have a good game");
+
 
         gameRepos.save(game1);
-//        userRepos.save(user);
         return "/calendar";
+    }
+
+    @PostMapping("delete")
+    public String deleteGame(@RequestParam String game,
+                             @AuthenticationPrincipal User userChannel,
+                             Model model){
+
+        Game game1 = gameRepos.findByName(game);
+        gameRepos.delete(game1);
+        Iterable<Game> games = gameRepos.findAll();
+
+        Long gameSize = gameRepos.count();
+        model.addAttribute("gameSize", gameSize);
+        model.addAttribute("userChannel", userChannel);
+        model.addAttribute("games", games);
+        return "calendar";
+
     }
 }

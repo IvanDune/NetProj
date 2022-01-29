@@ -1,5 +1,4 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/login.ftlh" as l>
 
 <@c.page>
 
@@ -11,7 +10,7 @@
     <button type="submit" class="btn btn-primary ml-2 mt-2">Find</button>
 </form>
 
-<div>List of users</div>
+    <div><h5>List of users</h5></div>
 ${message!""}
     <table>
         <thead>
