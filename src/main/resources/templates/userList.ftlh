@@ -11,28 +11,26 @@
 </form>
 
     <div><h5>List of users</h5></div>
-${message!""}
-    <table>
+    <h4><font color="#dc143c">${message!""}</font></h4>
+    <table class="table table-hover">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Password</th>
-            <th>Nickname</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th class="align-middle text-center">Id</th>
+            <th class="align-middle text-center">Name</th>
+            <th class="align-middle text-center">Nickname</th>
+            <th class="align-middle text-center">Email</th>
+            <th class="align-middle text-center">Role</th>
         </tr>
         </thead>
         <tbody>
         <#list users as user>
             <tr>
-                <td>${user.id}</td>
-                <td>${user.login}</td>
-                <td>${user.password}</td>
-                <td>${user.nickname}</td>
-                <td>${user.email}</td>
-                <td><#list user.roles as role>${role}<#sep>, </#list></td>
-                <td><a href="/user/${user.id}">edit</a></td>
+                <td class="align-middle text-center" >${user.id}</td>
+                <td class="align-middle text-center" >${user.login}</td>
+                <td class="align-middle text-center" >${user.nickname}</td>
+                <td class="align-middle text-center" >${user.email}</td>
+                <td class="align-middle text-center" ><#list user.roles as role>${role}<#sep>, </#list></td>
+                <td class="align-middle text-center" ><a href="/user/${user.id}">edit</a></td>
 
             </tr>
         <#else>

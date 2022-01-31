@@ -1,6 +1,7 @@
 <#include "security.ftlh">
 <#macro login path isRegisterForm>
 
+    <h4><font color="#dc143c">${errorMessage!""}</font></h4>
     <form action="${path}" method="post">
 
         <div class="form-group">

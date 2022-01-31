@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -48,7 +49,7 @@ public class CalendarController {
         if(filter != null && !filter.isEmpty()){
             if(gameRepos.findByName(filter)==null){
                 model.addAttribute("games", gameRepos.findAll());
-                model.addAttribute("message","No such game exists");
+                model.addAttribute("messageEr","No such game exists");
             } else {
                 List<Game> gameList = new ArrayList<>();
                 gameList.add(gameRepos.findByName(filter));
@@ -83,16 +84,16 @@ public class CalendarController {
         model.addAttribute("gameSize", gameSize);
 
         if(name==""){
-            model.addAttribute("message","Please, enter game name");
+            model.addAttribute("messageError","Please, enter game name");
             return "calendar";
         }
         if(gameFromDb != null){
-            model.addAttribute("message", "Game with a similar name already exists");
+            model.addAttribute("messageError", "Game with a similar name already exists");
             return"calendar";
         }
 
         if (system == System.Game){
-            model.addAttribute("message", "Please, enter game system");
+            model.addAttribute("messageError", "Please, enter game system");
             return"calendar";
         }
 
@@ -101,7 +102,7 @@ public class CalendarController {
         try {
             date2 = dateFormat.parse(date+" "+time);
         } catch (ParseException e) {
-            model.addAttribute("message", "Inappropriate date format");
+            model.addAttribute("messageError", "Inappropriate date format");
             return"calendar";
         }
         gameRepos.save(new Game(name,description,system,discord,date2));
@@ -126,7 +127,7 @@ public class CalendarController {
         }
         for (User usr : game1.getSubscribers()){
             if (usr.getLogin().equals(user.getLogin())){
-                model.addAttribute("message", "You are already registered to this game");
+                model.addAttribute("messageEr", "You are already registered to this game");
                 return "/calendar";
             }
         }
@@ -153,6 +154,12 @@ public class CalendarController {
         model.addAttribute("userChannel", userChannel);
         model.addAttribute("games", games);
         return "calendar";
+    }
 
+    @GetMapping("/calendar/{game}")
+    public String gameDescription(@PathVariable Game game,
+            Model model){
+        model.addAttribute("game",game);
+        return "descGame";
     }
 }

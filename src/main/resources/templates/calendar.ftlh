@@ -6,7 +6,9 @@
 
 
 
-    <h4><font color="#dc143c">${message!""}</font></h4>
+    <h4><font color="#dc143c">${messageEr!""}</font></h4>
+    <h4><font color="#006400">${message!""}</font></h4>
+
 
 
 
@@ -46,7 +48,7 @@
         <#list games as game>
             <tr>
                 <td class="align-middle text-center" >${game.name}</td>
-                <td class="align-middle text-center" >${game.description}</td>
+                <td class="align-middle text-center" ><a href="/calendar/${game.id}">Description</a></td>
                 <td class="align-middle text-center" >${game.gamerValue()}</td>
                 <td class="align-middle text-center" >${game.system}</td>
                 <td class="align-middle text-center" >${game.discord}</td>
@@ -84,7 +86,9 @@
 
     <#list userChannel.roles as role>
         <#if role  = "MASTER">
-<br><h5>Add new game</h5>
+            <h4><font color="#dc143c">${messageError!""}</font></h4>
+
+            <br><h5>Add new game</h5>
 <div class="form-row align-items-center mt-3">
 <form action="/add" method="post">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>

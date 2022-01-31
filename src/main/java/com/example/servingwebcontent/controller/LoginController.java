@@ -17,11 +17,7 @@ public class LoginController {
         HttpSession session = request.getSession(false);
         String errorMessage = null;
         if (session != null) {
-            AuthenticationException ex = (AuthenticationException) session
-                    .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-            if (ex != null) {
-                errorMessage = ex.getMessage();
-            }
+            errorMessage = "You entered an invalid password or login. Please try again.";
         }
         model.addAttribute("errorMessage", errorMessage);
         return "login";

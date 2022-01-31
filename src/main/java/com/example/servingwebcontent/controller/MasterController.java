@@ -59,13 +59,25 @@ public class MasterController {
             @RequestParam Integer gr,
             @RequestParam String mess,
             @RequestParam Integer number, Model model){
-
+        if(gr==null){
+            Iterable<Message> messages = messageRepos.findAll();
+            Set<Integer> exist = new HashSet<>();
+            for (Message mes : messageRepos.findByAuthor(user.getLogin()))
+                exist.add(mes.getNumber());
+            model.addAttribute("noMessage", "Enter your grade");
+            model.addAttribute("messages",messages);
+            model.addAttribute("exist1", exist.contains(1));
+            model.addAttribute("exist2", exist.contains(2));
+            model.addAttribute("exist3", exist.contains(3));
+            model.addAttribute("exist4", exist.contains(4));
+            return "master";
+        }
         if (mess==""){
             Iterable<Message> messages = messageRepos.findAll();
             Set<Integer> exist = new HashSet<>();
             for (Message mes : messageRepos.findByAuthor(user.getLogin()))
                 exist.add(mes.getNumber());
-            model.addAttribute("noMessage", "Enter your review");
+            model.addAttribute("noMessage", "Enter your review and grade");
             model.addAttribute("messages",messages);
             model.addAttribute("exist1", exist.contains(1));
             model.addAttribute("exist2", exist.contains(2));

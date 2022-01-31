@@ -1,21 +1,23 @@
 <#import "parts/common.ftlh" as c>
-
 <@c.page>
     <h3><font color="#dc143c"> ${noMessage!""}</font></h3>
 
     <div class="container">
     <div class="row">
     <div class="col-sm">
-    <div><h3>Максим Резик (Mr. Lampa)</h3></div>
+    <div><h3>Максим Резник (Mr. Lampa)</h3></div>
     <div class="col-auto my-1">
     <div class="col-sm-8"><h6><p class="text-justify">Большинство игр на сервере проходили под ведением этого мастера.
             Собрав вокруг себя группу почетателей Максим каждую неделю проводит
             ваншоты, привлекая все больше игроков в своей яркий и продуманный мир.
             Открыв наше расписание в с полной уверенностью сможете найти одну-две
                 игры Mr. Lampa.</p></h6></div></div>
-<#--    <img src="https://sun9-53.userapi.com/impg/c857328/v857328805/1ef16d/Xk8gMPD6GaQ.jpg?size=762x1080&quality=96&sign=820d160d8ac21caa6df32fc865f617dd&type=album">-->
-<#--        <iframe width="560" height="315" src="https://www.youtube.com/embed/AdLXmE4rjy4?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>        <h5>Средняя оценка мастера: ${grade1!""}</h5>-->
+        <img src="https://sun9-44.userapi.com/impg/NrTB_n_dghUwB0ehqP4gEC9stN-objuybLhedg/XLzZEyyoX3g.jpg?size=720x720&quality=96&sign=3aa57fc0408e37495d643aa888fff5bc&type=album" height="400" width="400">
+
+        <h5>Средняя оценка мастера: ${grade1!""}</h5>
+
     <h5>Отзывы:</h5>
+        <div class="col-sm-8 mb-5"><h6><p class="text-justify">
     <#list messages as message>
         <#if message.number = 1>
         <div>
@@ -24,6 +26,7 @@
         </div>
         </#if>
     </#list>
+                </div>
 
 
 
@@ -44,12 +47,17 @@
         </div>
     </#if>
 
+        <div class="mt-5"><h3>Никита Шишкин (Шишак)</h3></div>
+        <div class="col-auto my-1">
+            <div class="col-sm-8"><h6><p class="text-justify">Мастер, который поможет погрузиться в атмосферу фэнтезийного мира
+                        Dungeons & Dragons и многое расскажет, о его тайнах, особенностях, полетической структуре и правилах.</p></h6></div></div>
+        <img src="https://sun9-8.userapi.com/impg/W5Sx0eNF4NIULgvdNHZzxy5xdGftokkfmc3clw/Nw9YSIgSjlI.jpg?size=1439x1439&quality=95&sign=f47581c90468b57cfabb76826704c189&type=album" height="400" width="400">
 
-    <div class="mt-5"><h3></h3></div>
-    <div><h6></h6></div>
-    <h5>Средняя оценка мастера: ${grade2!""}</h5>
+        <h5>Средняя оценка мастера: ${grade2!""}</h5>
+
 
     <h5>Отзывы:</h5>
+        <div class="col-sm-8 mb-5"><h6><p class="text-justify">
     <#list messages as message>
         <#if message.number = 2>
             <div>
@@ -58,7 +66,7 @@
             </div>
         </#if>
     </#list>
-
+                </div>
     <#if exist2 = false>
         <div>
     <form method="post">
@@ -77,11 +85,17 @@
     </#if>
     </div>
         <div class="col-sm">
-    <div><h3>Никита Шишкин (Шишак)</h3></div>
-    <div><h4>Описание третьего мастера</h4></div>
-    <h5>Средняя оценка мастера: ${grade3!""}</h5>
+            <div><h3>Дюнин Иван (Хозяин Таверны)</h3></div>
+            <div class="col-auto my-1">
+                <div class="col-sm-8"><h6><p class="text-justify">Мастер с 4-летним стажем, обладающий познаниями в более 10 системах.
+                            За его плечами лежит не мало модулей и квестов, побежденных драконов и разгаданных тайн. Если вы жаждите настоящего темного фэнтези, то
+                            обращайтесь к нему. Не прогадаете!</p></h6></div></div>
+            <img src="https://sun9-63.userapi.com/impg/Dm2K0vrHRZplvTgMluPTdxvMksSivirN-VO0mQ/a3AMROJu-i8.jpg?size=1099x1099&quality=95&sign=989e9d26d12987eda45f564540292232&type=album" height="400" width="400">
+
+            <h5>Средняя оценка мастера: ${grade3!""}</h5>
 
     <h5>Отзывы:</h5>
+            <div class="col-sm-8 mb-5"><h6><p class="text-justify">
     <#list messages as message>
         <#if message.number = 3>
             <div>
@@ -90,7 +104,7 @@
             </div>
         </#if>
     </#list>
-
+</div>
     <#if exist3 = false>
         <div>
     <form method="post">
@@ -102,7 +116,7 @@
             </div>
         </div>
         Введите вашу оценку мастера от 1 до 10:
-        <input type="number" min="1" max="10" name="gr">
+        <input type="number" min="1" max="10" name="gr" required>
         <button type="submit" class="btn btn-primary ml-2 mt-1">Create</button>
     </form>
     </div>
@@ -116,9 +130,12 @@
             на нашем канале YouTube. За свои 7 выступлений Василий успел поделиться
             с людьми полезными советами о создании мира, домашних правил и
             поговорить о выгорании игроков и мастеров.</p></h6></div></div>
-    <h5>Средняя оценка мастера: ${grade4!""}</h5>
+            <img src="https://sun9-66.userapi.com/impg/5mbJQg2H2L6b579e8kELBXjRPyLE7vtUJhYUXw/UIqGjdZO_m4.jpg?size=1637x1638&quality=95&sign=a98d29e6e3859128334d418fde963c06&type=album" height="400" width="400">
+
+            <h5>Средняя оценка мастера: ${grade4!""}</h5>
 
     <h5>Отзывы:</h5>
+            <div class="col-sm-8 mb-5"><h6><p class="text-justify">
     <#list messages as message>
         <#if message.number = 4>
             <div>
@@ -127,6 +144,7 @@
             </div>
         </#if>
     </#list>
+                    </div>
 
     <#if exist4 = false>
         <div>

@@ -52,9 +52,14 @@ public class UserController {
         Model model){
 
             if (filter != null && !filter.isEmpty()){
-                List<UserDetails> userDetailsList = new ArrayList<>();
-                userDetailsList.add(userService.loadUserByUsername(filter));
-                model.addAttribute("users", userDetailsList);
+                if (userService.loadUserByUsername(filter)==null){
+                    model.addAttribute("message", "This user does not exist.");
+                    model.addAttribute("users", userService.findAll());
+                } else{
+                    List<UserDetails> userDetailsList = new ArrayList<>();
+                    userDetailsList.add(userService.loadUserByUsername(filter));
+                    model.addAttribute("users", userDetailsList);
+                }
             } else{
                 model.addAttribute("users", userService.findAll());
             }
