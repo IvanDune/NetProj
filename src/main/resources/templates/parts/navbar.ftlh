@@ -23,6 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/user/profile">Profile</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dice">Dices</a>
+            </li>
             <#if isAdmin>
             <li class="nav-item">
                 <a class="nav-link" href="/user">User list</a>

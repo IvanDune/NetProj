@@ -1,7 +1,6 @@
 package com.example.servingwebcontent.controller;
 
 import com.example.servingwebcontent.domain.Game;
-import com.example.servingwebcontent.domain.Role;
 import com.example.servingwebcontent.domain.System;
 import com.example.servingwebcontent.domain.User;
 import com.example.servingwebcontent.repos.GameRepos;
@@ -9,7 +8,6 @@ import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
-public class CalendarController {
+public class    CalendarController {
     @Autowired
     private GameRepos gameRepos;
 
@@ -64,6 +62,7 @@ public class CalendarController {
         model.addAttribute("filter", filter);
         return "calendar";
     }
+
     @PreAuthorize("hasAuthority('MASTER')")
     @PostMapping("/add")
     public String addGame(@RequestParam String name,

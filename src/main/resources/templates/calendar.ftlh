@@ -4,15 +4,8 @@
 
 <h1>Welcome to our calendar</h1>
 
-
-
     <h4><font color="#dc143c">${messageEr!""}</font></h4>
     <h4><font color="#006400">${message!""}</font></h4>
-
-
-
-
-
 
     <nav class="navbar navbar-dark bg-light col-sm-5">
         <div class="container-fluid">

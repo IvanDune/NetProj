@@ -50,9 +50,7 @@ public class UserService implements UserDetailsService {
             if (key.equals("USER")){
                 user.getRoles().add(Role.valueOf("USER"));
             }
-//            if(roles.contains(key)){
-//                user.getRoles().add(Role.valueOf(key));
-//            }
+//
         }
         userRepos.save(user);
     }
