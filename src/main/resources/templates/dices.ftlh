@@ -3,10 +3,18 @@
     <h4><font color="#dc143c">${messageEr!""}</font></h4>
 
     <form method="post">
+        <h6>Enter number of dice</h6>
+            <div class="col-sm-8 my-1">
+    <input type="number" min="1" name="numDice"  value="0">
+            </div>
 
-    <input type="number" min="1" name="numDice" placeholder="Enter number of dice" value="0">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <input type="number" min="-20" max="20" name="modDice" placeholder="Enter modifier" value="0">
+    <br>
+
+        <h6>Enter modifier</h6>
+        <div class="col-sm-8 my-1">
+        <input type="number" min="-20" max="20" name="modDice" value="0">
+        </div>
         <select class="form-select" aria-label="Default select example" name="dice">
             <option selected>Choose dice</option>
             <option value="4">d4</option>
