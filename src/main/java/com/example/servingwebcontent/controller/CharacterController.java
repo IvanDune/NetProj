@@ -1,0 +1,103 @@
+package com.example.servingwebcontent.controller;
+
+import com.example.servingwebcontent.domain.Game;
+import com.example.servingwebcontent.domain.User;
+import com.example.servingwebcontent.domain.dnd.characters.Character;
+import com.example.servingwebcontent.domain.dnd.characters.Characteristics;
+import com.example.servingwebcontent.domain.dnd.characters.Race;
+import com.example.servingwebcontent.logic.Randomizer;
+import com.example.servingwebcontent.repos.UserRepos;
+import com.example.servingwebcontent.repos.dnd.CharacterRepos;
+import com.example.servingwebcontent.repos.dnd.CharacteristicRepos;
+import com.example.servingwebcontent.repos.dnd.RaceRepos;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Optional;
+
+@Controller
+@RequestMapping("/character")
+public class CharacterController {
+    @Autowired
+    UserRepos userRepos;
+
+    @Autowired
+    RaceRepos raceRepos;
+
+    @Autowired
+    CharacteristicRepos characteristicRepos;
+
+    Character character = new Character();
+
+    int[] characteristics = new int[6];
+    int[] characteristicsMod = new int[6];
+
+    @GetMapping
+    public String main(@AuthenticationPrincipal User user, Model model){
+
+        for (int i = 0; i < 6; i++){
+            characteristics[i] = Randomizer.characteristic();
+            characteristicsMod[i] = Randomizer.characteristicMod(characteristics[i]);
+        }
+        model.addAttribute("user",user);
+        model.addAttribute("characteristics",characteristics);
+        model.addAttribute("characteristicsMod",characteristicsMod);
+        return "stats";
+    }
+
+    @GetMapping("race")
+    public String race(@AuthenticationPrincipal User user,
+                       Model model){
+        Iterable<Race> races = raceRepos.findAll();
+        model.addAttribute("races",races);
+        return "race";
+    }
+
+//    @GetMapping("class")
+//    public String class(@AuthenticationPrincipal User user, Model model){
+//        Iterable<Class> classes = classRepos.findAll();
+//        model.addAttribute("classes",classes);
+//        return "classes";
+//    }
+
+    @GetMapping("/race/{race}")
+    public String gameDescription(@PathVariable Race race,
+                                  Model model){
+        model.addAttribute("race",race);
+        model.addAttribute("raceVariety",race.getRaceVarietiesSet().size());
+        return "descRace";
+    }
+
+    @PostMapping
+    public String regen(){
+        return "redirect:/character";
+    }
+
+    @PostMapping("/goRace")
+    public String goRace(Model model){
+        Characteristics characteristics1 =
+                new Characteristics(characteristics[0],characteristicsMod[0],characteristics[1],
+                characteristicsMod[1],characteristics[2],characteristicsMod[2],
+                characteristics[3],characteristicsMod[3],characteristics[4],
+                characteristicsMod[4],characteristics[5],characteristicsMod[5]);
+        characteristicRepos.save(characteristics1);
+        character.setCharacteristicsId(characteristics1.getId());
+
+        return "redirect:/character/race";
+    }
+
+    @PostMapping("race/goClass")
+    public String goClass(@RequestParam Long raceId, @RequestParam Long goClazz, Model model){
+        Race race = raceRepos.findById(raceId).orElse(new Race());
+        if (race.getRaceVarietiesSet().size()!=0){
+            character.setRaceVariety(goClazz);
+        }
+        character.setRaceId(race.getId());
+        model.addAttribute("character",character);
+        return "redirect:/character/class";
+    }
+}

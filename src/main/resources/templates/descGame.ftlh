@@ -5,9 +5,9 @@
 <#--    <nav class="navbar navbar-dark bg-light col-sm-5">-->
     <div class=" col-sm col-auto my-1 ">
     <div class="col-sm-5">
-        <h5>Название игры: </h5>
+        <h5>Game name: </h5>
         <h6><p class="text-justify">${game.name}</p></h6>
-        <h5>Описание:</h5>
+        <h5>Description:</h5>
         <h6><p class="text-justify"> ${game.description} </p></h6>
         <h5>Gamers: </h5>
         <h6><p class="text-justify"> ${game.gamerValue()} </p></h6>

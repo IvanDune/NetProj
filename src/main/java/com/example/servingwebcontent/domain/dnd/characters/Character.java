@@ -16,22 +16,29 @@ public class Character extends Essence{
     @Column(name="race")
     private Long raceId;
 
+    @Column(name="raceVariety")
+    private Long raceVariety;
+
     @Column(name="class")
     private Long classId;
 
     @Column(name="characteristics")
     private Long characteristicsId;
 
+    @Column(name="userId")
+    private Long userId;
+
 
     public Character(){
 
     }
 
-    public Character(String name, Long raceId, Long classId, Long characteristicsId) {
+    public Character(String name, Long raceId, Long classId, Long characteristicsId, Long userId) {
         this.name = name;
         this.raceId = raceId;
         this.classId = classId;
         this.characteristicsId = characteristicsId;
+        this.userId = userId;
     }
 
     public String getName() {
@@ -64,5 +71,29 @@ public class Character extends Essence{
 
     public void setCharacteristicsId(Long characteristicsId) {
         this.characteristicsId = characteristicsId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getRaceVariety() {
+        return raceVariety;
+    }
+
+    public void setRaceVariety(Long raceVariety) {
+        this.raceVariety = raceVariety;
     }
 }

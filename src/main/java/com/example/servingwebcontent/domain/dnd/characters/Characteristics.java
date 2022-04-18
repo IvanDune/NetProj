@@ -52,12 +52,11 @@ public class Characteristics {
 
     }
 
-    public Characteristics(Long essenceId, int strength, int strengthMod,
+    public Characteristics(int strength, int strengthMod,
                            int dexterity, int dexterityMod, int constitution,
                            int constitutionMod, int wisdom, int wisdomMod,
                            int intelligence, int intelligenceMod, int charisma,
                            int charismaMod) {
-        this.essenceId = essenceId;
         this.strength = strength;
         this.strengthMod = strengthMod;
         this.dexterity = dexterity;

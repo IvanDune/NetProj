@@ -1,6 +1,8 @@
 package com.example.servingwebcontent.logic;
 
-import java.util.Random;
+import org.yaml.snakeyaml.util.ArrayUtils;
+
+import java.util.*;
 
 public class Randomizer {
 
@@ -25,5 +27,24 @@ public class Randomizer {
         if (sum+mod>=0)
             return sum+mod;
         else return 0;
+    }
+
+    public static int characteristic(){
+        ArrayList<Integer> list = new ArrayList<>();
+        int sum = 0;
+        for (int i=0;i<4;i++){
+            list.add(rand(6));
+            sum += list.get(i);
+        }
+        int i = (int) Collections.min(list);
+        sum -=i;
+        return sum;
+    }
+
+    public static int characteristicMod(int num){
+        double i = (double) (num-10)/2;
+        if (i<0&&i%1!=0)
+            i-=0.5;
+        return (int) i;
     }
 }
