@@ -2,11 +2,13 @@ package com.example.servingwebcontent.controller;
 
 import com.example.servingwebcontent.domain.Game;
 import com.example.servingwebcontent.domain.User;
+import com.example.servingwebcontent.domain.dnd.characters.ChaClass;
 import com.example.servingwebcontent.domain.dnd.characters.Character;
 import com.example.servingwebcontent.domain.dnd.characters.Characteristics;
 import com.example.servingwebcontent.domain.dnd.characters.Race;
 import com.example.servingwebcontent.logic.Randomizer;
 import com.example.servingwebcontent.repos.UserRepos;
+import com.example.servingwebcontent.repos.dnd.ChaClassRepos;
 import com.example.servingwebcontent.repos.dnd.CharacterRepos;
 import com.example.servingwebcontent.repos.dnd.CharacteristicRepos;
 import com.example.servingwebcontent.repos.dnd.RaceRepos;
@@ -30,6 +32,9 @@ public class CharacterController {
 
     @Autowired
     CharacteristicRepos characteristicRepos;
+
+    @Autowired
+    ChaClassRepos chaClassRepos;
 
     Character character = new Character();
 
@@ -57,19 +62,33 @@ public class CharacterController {
         return "race";
     }
 
-//    @GetMapping("class")
-//    public String class(@AuthenticationPrincipal User user, Model model){
-//        Iterable<Class> classes = classRepos.findAll();
-//        model.addAttribute("classes",classes);
-//        return "classes";
-//    }
+    @GetMapping("class")
+    public String clazz(@AuthenticationPrincipal User user,
+                        Model model){
+        Iterable<ChaClass> chaClasses = chaClassRepos.findAll();
+        model.addAttribute("clazzes", chaClasses);
+        return "clazz";
+    }
+
 
     @GetMapping("/race/{race}")
-    public String gameDescription(@PathVariable Race race,
+    public String raceDescription(@PathVariable Race race,
                                   Model model){
         model.addAttribute("race",race);
         model.addAttribute("raceVariety",race.getRaceVarietiesSet().size());
         return "descRace";
+    }
+
+    @GetMapping("/class/{chaClass}")
+    public String classDescription(@PathVariable ChaClass chaClass,
+                                       Model model){
+        model.addAttribute("clazz",chaClass);
+//        model.addAttribute("clazzSaves",chaClass.getPro_saves());
+//        model.addAttribute("clazzArmor",chaClass.getPro_armor());
+//        model.addAttribute("clazzSkills",chaClass.getPro_skills());
+//        model.addAttribute("clazzWeapon",chaClass.getPro_weapon());
+//        model.addAttribute("clazzAbilities",chaClass.getClassAbilitiesSet());
+        return "descClass";
     }
 
     @PostMapping
