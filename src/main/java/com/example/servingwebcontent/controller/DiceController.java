@@ -13,8 +13,6 @@ public class DiceController {
 
     @GetMapping("/dice")
     public String main(Model model){
-//        model.addAttribute("numDice", 0);
-//        model.addAttribute("modDice", 0);
         return "dices";
     }
 
