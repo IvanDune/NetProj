@@ -1,6 +1,5 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.Game;
 import com.example.servingwebcontent.domain.User;
 import com.example.servingwebcontent.domain.dnd.characters.ChaClass;
 import com.example.servingwebcontent.domain.dnd.characters.Character;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Optional;
 
 @Controller
@@ -100,8 +98,19 @@ public class CharacterController {
     @GetMapping("/result")
     public String result(Model model){
         Character character = characterRepos.findByName("CharacterCreate");
+        Optional<Race> r = raceRepos.findById(character.getRaceId());
+        Race race = r.get();
+        Optional<ChaClass> c = chaClassRepos.findById(character.getClassId());
+        ChaClass chaClass = c.get();
+
+        character.setClassName(chaClass.getName());
+        character.setRaceName(race.getName());
+
         model.addAttribute("character", character);
-        return "characterResult";
+        model.addAttribute("race", race);
+        model.addAttribute("clazz", chaClass);
+
+        return "characterRes";
     }
 
     @PostMapping
@@ -145,5 +154,22 @@ public class CharacterController {
         character.setLevel(level);
         characterRepos.save(character);
         return "redirect:/character/result";
+    }
+
+    @PostMapping("/saveCharacter")
+    public String saveCharacter(@AuthenticationPrincipal User user,
+                                @RequestParam String characterName, Model model){
+        if (characterName == ""){
+            model.addAttribute("mesError", "Please, enter character name");
+            return "characterRes";
+        }
+        Character character = characterRepos.findByName("CharacterCreate");
+        character.setName(characterName);
+        User user1 = userRepos.findByLogin(user.getLogin());
+        user1.getCharacters().add(character);
+        character.setUserId(user1.getId());
+        characterRepos.save(character); // ТУТ ОШИБКА
+        userRepos.save(user1);
+        return "profile";
     }
 }

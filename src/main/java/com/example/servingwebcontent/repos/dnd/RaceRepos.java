@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RaceRepos extends JpaRepository<Race, Long> {
     Race findByName(String name);
-    Race findById(ID id);
+//    Race findById(ID id);
 }

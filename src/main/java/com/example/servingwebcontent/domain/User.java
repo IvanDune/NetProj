@@ -1,4 +1,5 @@
 package com.example.servingwebcontent.domain;
+import com.example.servingwebcontent.domain.dnd.characters.Character;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -30,6 +31,11 @@ public class User implements UserDetails {
     @Column(name="active")
     private Boolean active;
 
+    @Column(name="characterId")
+    @OneToMany
+    @CollectionTable(name = "user_character", joinColumns = @JoinColumn(name = "character_id"))
+    Set<Character> characters;
+
     @Column(name="roles")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -57,6 +63,11 @@ public class User implements UserDetails {
     public Integer gameValue(){
         return getSubscriptions().size();
     }
+
+    public Integer characterValue(){
+        return getCharacters().size();
+    }
+
 
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
@@ -160,5 +171,15 @@ public class User implements UserDetails {
         return isActive();
     }
 
+    public Boolean getActive() {
+        return active;
+    }
 
+    public Set<Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(Set<Character> characters) {
+        this.characters = characters;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.servingwebcontent.domain.dnd.characters;
 
 import javax.persistence.*;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -30,6 +31,13 @@ public class Character extends Essence{
 
     @Column(name="level")
     private int level;
+
+    @Column(name="className")
+    private String className;
+
+    @Column(name="raceName")
+    private String raceName;
+
 
 
     public Character(){
@@ -106,5 +114,21 @@ public class Character extends Essence{
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getRaceName() {
+        return raceName;
+    }
+
+    public void setRaceName(String raceName) {
+        this.raceName = raceName;
     }
 }

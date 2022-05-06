@@ -62,4 +62,38 @@
     </table>
     </#if>
 
+    <#if user.characterValue()!=0>
+    <table class="table table-hover" >
+        <thead>
+        <tr>
+            <th class="align-middle text-center">Name</th>
+            <th class="align-middle text-center">Level</th>
+            <th class="align-middle text-center">Class</th>
+            <th class="align-middle text-center">Race</th>
+            <th class="align-middle text-center">Description</th>
+            <th class="align-middle text-center">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+
+        <#list characters as character>
+            <td class="align-middle text-center">${character.name}</td>
+            <td class="align-middle text-center">${character.level}</td>
+            <td class="align-middle text-center">${character.className}</td>
+            <td class="align-middle text-center">${character.raceName}</td>
+            <td class="align-middle text-center"><a href="/${user.id}/${character.id}">Description</a></td>
+            <td class="align-middle text-center">
+                <form action="/deleteCharacter" method="post">
+                    <input type="hidden" name="characterId" value="${character.getId()}"/>
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="unsub">Delete</button>
+                </form>
+            </td>
+        </#list>
+        </tbody>
+    </table>
+
+    </#if>
 </@c.page>

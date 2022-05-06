@@ -3,8 +3,14 @@ package com.example.servingwebcontent.controller;
 import com.example.servingwebcontent.domain.Game;
 import com.example.servingwebcontent.domain.Role;
 import com.example.servingwebcontent.domain.User;
+import com.example.servingwebcontent.domain.dnd.characters.ChaClass;
+import com.example.servingwebcontent.domain.dnd.characters.Character;
+import com.example.servingwebcontent.domain.dnd.characters.Race;
 import com.example.servingwebcontent.repos.GameRepos;
 import com.example.servingwebcontent.repos.UserRepos;
+import com.example.servingwebcontent.repos.dnd.ChaClassRepos;
+import com.example.servingwebcontent.repos.dnd.CharacterRepos;
+import com.example.servingwebcontent.repos.dnd.RaceRepos;
 import com.example.servingwebcontent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,10 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -29,6 +32,15 @@ public class UserController {
 
     @Autowired
     private GameRepos gameRepos;
+
+    @Autowired
+    private RaceRepos raceRepos;
+
+    @Autowired
+    private ChaClassRepos chaClassRepos;
+
+    @Autowired
+    private CharacterRepos characterRepos;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/user")
@@ -43,6 +55,20 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "userEdit";
+    }
+
+    @GetMapping("{user}/{character}")
+    public String characterDescription(@PathVariable User user, @PathVariable Character character,
+                                       Model model){
+        Optional<Race> r = raceRepos.findById(character.getRaceId());
+        Race race = r.get();
+        Optional<ChaClass> c = chaClassRepos.findById(character.getClassId());
+        ChaClass chaClass = c.get();
+
+        model.addAttribute("character", character);
+        model.addAttribute("race", race);
+        model.addAttribute("clazz", chaClass);
+        return "characterDescription";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -87,6 +113,7 @@ public class UserController {
         model.addAttribute("user", user1);
         model.addAttribute("nickname", user.getNickname());
         model.addAttribute("email", user.getEmail());
+        model.addAttribute("characters",user.getCharacters());
 
         return "profile";
     }
@@ -111,6 +138,20 @@ public class UserController {
 
         return "redirect:/user/profile";
 
+    }
+
+    @PostMapping("/deleteCharacter")
+    public String deleteCharacter(@AuthenticationPrincipal User user,
+            @RequestParam Long characterId){
+        Optional<Character> ch = characterRepos.findById(characterId);
+        Character character = ch.get();
+
+        User userHelp = userRepos.findByLogin(user.getLogin());
+        userHelp.getCharacters().remove(character);
+        characterRepos.delete(character);
+        userRepos.save(userHelp);
+
+        return "profile";
     }
 
     @PostMapping("/user/profile")
