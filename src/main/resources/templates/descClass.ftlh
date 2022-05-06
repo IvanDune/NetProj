@@ -32,15 +32,16 @@
             <#list clazz.classAbilitiesSet as ability>
                 <h6><p class="text-justify"> ${ability.name}: ${ability.description}</p></h6>
             </#list>
-            <form method="post" action="goNext">
+            <form method="post" action="goEnd">
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 <input type="hidden" name="classId" value="${clazz.getId()}"/>
                 <select class="form-select" aria-label="Default select example" name="level">
                     <option selected>Choose level</option>
                     <#list 1..20 as lvl>
-                        <option value="${lvl}">#{lvl}</option>
+                        <option value=${lvl}>${lvl}</option>
                     </#list>
                 </select>
+                <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="goEnd" value="${clazz.getId()}">Choose</button>
 <#--                <#if raceVariety==0>-->
 <#--                    <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="goClazz" value="${race.getId()}">Choose</button>-->
 <#--                <#else>-->

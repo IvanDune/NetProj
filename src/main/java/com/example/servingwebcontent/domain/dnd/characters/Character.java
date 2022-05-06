@@ -28,6 +28,9 @@ public class Character extends Essence{
     @Column(name="userId")
     private Long userId;
 
+    @Column(name="level")
+    private int level;
+
 
     public Character(){
 
@@ -95,5 +98,13 @@ public class Character extends Essence{
 
     public void setRaceVariety(Long raceVariety) {
         this.raceVariety = raceVariety;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

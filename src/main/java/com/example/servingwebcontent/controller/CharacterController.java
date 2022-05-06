@@ -24,6 +24,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/character")
 public class CharacterController {
+
     @Autowired
     UserRepos userRepos;
 
@@ -36,7 +37,9 @@ public class CharacterController {
     @Autowired
     ChaClassRepos chaClassRepos;
 
-    Character character = new Character();
+    @Autowired
+    CharacterRepos characterRepos;
+
 
     int[] characteristics = new int[6];
     int[] characteristicsMod = new int[6];
@@ -48,6 +51,9 @@ public class CharacterController {
             characteristics[i] = Randomizer.characteristic();
             characteristicsMod[i] = Randomizer.characteristicMod(characteristics[i]);
         }
+        Character ch = characterRepos.findByName("CharacterCreate");
+        if (ch != null)
+            characterRepos.delete(ch);
         model.addAttribute("user",user);
         model.addAttribute("characteristics",characteristics);
         model.addAttribute("characteristicsMod",characteristicsMod);
@@ -91,6 +97,13 @@ public class CharacterController {
         return "descClass";
     }
 
+    @GetMapping("/result")
+    public String result(Model model){
+        Character character = characterRepos.findByName("CharacterCreate");
+        model.addAttribute("character", character);
+        return "characterResult";
+    }
+
     @PostMapping
     public String regen(){
         return "redirect:/character";
@@ -104,19 +117,33 @@ public class CharacterController {
                 characteristics[3],characteristicsMod[3],characteristics[4],
                 characteristicsMod[4],characteristics[5],characteristicsMod[5]);
         characteristicRepos.save(characteristics1);
+        Character character = new Character();
         character.setCharacteristicsId(characteristics1.getId());
-
+        character.setName("CharacterCreate");
+        character.setCharacteristicsId(characteristics1.getId());
+        characterRepos.save(character);
         return "redirect:/character/race";
     }
 
     @PostMapping("race/goClass")
     public String goClass(@RequestParam Long raceId, @RequestParam Long goClazz, Model model){
         Race race = raceRepos.findById(raceId).orElse(new Race());
+        Character character = characterRepos.findByName("CharacterCreate");
         if (race.getRaceVarietiesSet().size()!=0){
             character.setRaceVariety(goClazz);
         }
         character.setRaceId(race.getId());
+        characterRepos.save(character);
         model.addAttribute("character",character);
         return "redirect:/character/class";
+    }
+
+    @PostMapping("/class/goEnd")
+    public String goEnd(@RequestParam Long classId, @RequestParam int level, Model model){
+        Character character = characterRepos.findByName("CharacterCreate");
+        character.setClassId(classId);
+        character.setLevel(level);
+        characterRepos.save(character);
+        return "redirect:/character/result";
     }
 }
