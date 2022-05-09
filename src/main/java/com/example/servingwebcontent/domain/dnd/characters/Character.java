@@ -131,4 +131,6 @@ public class Character extends Essence{
     public void setRaceName(String raceName) {
         this.raceName = raceName;
     }
+    
+
 }

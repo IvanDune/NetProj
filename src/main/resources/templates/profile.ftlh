@@ -86,7 +86,7 @@
             <td class="align-middle text-center"><a href="/${user.id}/${character.id}">Description</a></td>
             <td class="align-middle text-center">
                 <form action="/deleteCharacter" method="post">
-                    <input type="hidden" name="characterId" value="${character.getId()}"/>
+                        <input type="hidden" name="characterId" value="${character.getId()}"/>
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                     <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="unsub">Delete</button>
                 </form>

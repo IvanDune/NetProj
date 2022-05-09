@@ -100,8 +100,11 @@ public class CharacterController {
         Character character = characterRepos.findByName("CharacterCreate");
         Optional<Race> r = raceRepos.findById(character.getRaceId());
         Race race = r.get();
+        character.setRaceName(race.getName());
+
         Optional<ChaClass> c = chaClassRepos.findById(character.getClassId());
         ChaClass chaClass = c.get();
+        character.setClassName(chaClass.getName());
 
         character.setClassName(chaClass.getName());
         character.setRaceName(race.getName());
@@ -110,6 +113,7 @@ public class CharacterController {
         model.addAttribute("race", race);
         model.addAttribute("clazz", chaClass);
 
+        characterRepos.save(character);
         return "characterRes";
     }
 
@@ -165,11 +169,14 @@ public class CharacterController {
         }
         Character character = characterRepos.findByName("CharacterCreate");
         character.setName(characterName);
+
         User user1 = userRepos.findByLogin(user.getLogin());
         user1.getCharacters().add(character);
         character.setUserId(user1.getId());
-        characterRepos.save(character); // ТУТ ОШИБКА
+
+
+        characterRepos.save(character);
         userRepos.save(user1);
-        return "profile";
+        return "redirect:/user/profile";
     }
 }

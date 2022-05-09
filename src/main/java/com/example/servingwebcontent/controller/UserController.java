@@ -109,11 +109,12 @@ public class UserController {
     @GetMapping("/user/profile")
     public String getProfile(Model model, @AuthenticationPrincipal User user){
         User user1 = userRepos.findByLogin(user.getLogin());
+        Iterable<Character> characters = user1.getCharacters();
         model.addAttribute("games", user1.getSubscriptions());
         model.addAttribute("user", user1);
-        model.addAttribute("nickname", user.getNickname());
-        model.addAttribute("email", user.getEmail());
-        model.addAttribute("characters",user.getCharacters());
+        model.addAttribute("nickname", user1.getNickname());
+        model.addAttribute("email", user1.getEmail());
+        model.addAttribute("characters",characters);
 
         return "profile";
     }
@@ -151,7 +152,7 @@ public class UserController {
         characterRepos.delete(character);
         userRepos.save(userHelp);
 
-        return "profile";
+        return "redirect:/user/profile";
     }
 
     @PostMapping("/user/profile")
