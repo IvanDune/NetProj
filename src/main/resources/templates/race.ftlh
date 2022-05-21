@@ -1,5 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
+    <h3>Choose your race</h3>
     <table class="table table-hover">
         <thead>
         <tr>

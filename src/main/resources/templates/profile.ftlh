@@ -79,6 +79,7 @@
 
 
         <#list characters as character>
+            <tr>
             <td class="align-middle text-center">${character.name}</td>
             <td class="align-middle text-center">${character.level}</td>
             <td class="align-middle text-center">${character.className}</td>
@@ -91,6 +92,7 @@
                     <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="unsub">Delete</button>
                 </form>
             </td>
+            </tr>
         </#list>
         </tbody>
     </table>

@@ -56,6 +56,9 @@
         <div class="col-sm-8 my-1">
             <input type="number" min="-20" max="20" name="modDice" value="0">
         </div>
+
+
+            <div class="col-sm-5">
         <select class="form-select" aria-label="Default select example" name="dice">
             <option selected>Choose dice</option>
             <option value="4">d4</option>
@@ -66,6 +69,7 @@
             <option value="20">d20</option>
             <option value="100">d100</option>
         </select>
+            </div>
         <button type="submit" class="btn btn-primary ml-2 mt-1">Create</button>
 
     </form>

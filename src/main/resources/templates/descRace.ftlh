@@ -15,7 +15,7 @@
         <h6><p class="text-justify"> ${race.age} </p></h6>
         <h5>Buffs: </h5>
         <#list race.buffs as buff>
-            <h6><p class="text-justify"> ${buff.name()}: ${buff.equals()}</p></h6>
+            <h6><p class="text-justify"> ${buff.getName()}: ${buff.getMod()}</p></h6>
         </#list>
         <h5>Abilities: </h5>
         <#list race.raceAbilitiesSet as ability>
@@ -34,7 +34,7 @@
                     <h6><p class="text-justify"> ${variety.name} </p></h6>
                     <h5>Variety buffs: </h5>
                     <#list variety.buffs as buff>
-                        <h6><p class="text-justify"> ${buff.name()}: ${buff.equals()}</p></h6>
+                        <h6><p class="text-justify"> ${buff.getName()}: ${buff.getMod()}</p></h6>
                     </#list>
                     <h5>Variety abilities: </h5>
                     <#list variety.raceAbilitiesSet as ability>

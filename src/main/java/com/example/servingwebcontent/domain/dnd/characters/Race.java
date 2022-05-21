@@ -25,7 +25,7 @@ public class Race {
     private Set<RaceVarieties> raceVarietiesSet;
 
     @Column(name="buffs")
-    @ElementCollection(targetClass = CharacteristicBuff.class, fetch = FetchType.EAGER)
+    @ManyToMany
     @CollectionTable(name = "race_buff", joinColumns = @JoinColumn(name = "race_id"))
     @Enumerated(EnumType.STRING)
     private Set<CharacteristicBuff> buffs;

@@ -2,23 +2,52 @@ package com.example.servingwebcontent.domain.dnd.characters;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum CharacteristicBuff  {
-    STR_ONE (1),
-    STR_TWO (2),
-    DEX_ONE (1),
-    DEX_TWO (2),
-    CON_ONE (1),
-    CON_TWO (2),
-    WIS_ONE (1),
-    WIS_TWO (2),
-    INT_ONE (1),
-    INT_TWO (2),
-    CHA_ONE (1),
-    CHA_TWO (2);
+import javax.persistence.*;
 
+@Entity
+public class CharacteristicBuff  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "mod")
     private int mod;
 
-    CharacteristicBuff(int mod){
-        this.mod=mod;
+    CharacteristicBuff(){
+
+
+    }
+
+    public CharacteristicBuff(String name, int mod) {
+        this.name = name;
+        this.mod = mod;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getMod() {
+        return mod;
+    }
+
+    public void setMod(int mod) {
+        this.mod = mod;
     }
 }

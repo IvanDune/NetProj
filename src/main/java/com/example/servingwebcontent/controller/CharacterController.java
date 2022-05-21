@@ -1,16 +1,11 @@
 package com.example.servingwebcontent.controller;
 
 import com.example.servingwebcontent.domain.User;
-import com.example.servingwebcontent.domain.dnd.characters.ChaClass;
+import com.example.servingwebcontent.domain.dnd.characters.*;
 import com.example.servingwebcontent.domain.dnd.characters.Character;
-import com.example.servingwebcontent.domain.dnd.characters.Characteristics;
-import com.example.servingwebcontent.domain.dnd.characters.Race;
 import com.example.servingwebcontent.logic.Randomizer;
 import com.example.servingwebcontent.repos.UserRepos;
-import com.example.servingwebcontent.repos.dnd.ChaClassRepos;
-import com.example.servingwebcontent.repos.dnd.CharacterRepos;
-import com.example.servingwebcontent.repos.dnd.CharacteristicRepos;
-import com.example.servingwebcontent.repos.dnd.RaceRepos;
+import com.example.servingwebcontent.repos.dnd.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -38,6 +33,9 @@ public class CharacterController {
     @Autowired
     CharacterRepos characterRepos;
 
+    @Autowired
+    NumberRepos numberRepos;
+
 
     int[] characteristics = new int[6];
     int[] characteristicsMod = new int[6];
@@ -48,6 +46,7 @@ public class CharacterController {
         for (int i = 0; i < 6; i++){
             characteristics[i] = Randomizer.characteristic();
             characteristicsMod[i] = Randomizer.characteristicMod(characteristics[i]);
+            numberRepos.save(new DHNumber(characteristics[i]));
         }
         Character ch = characterRepos.findByName("CharacterCreate");
         if (ch != null)
@@ -112,6 +111,7 @@ public class CharacterController {
         model.addAttribute("character", character);
         model.addAttribute("race", race);
         model.addAttribute("clazz", chaClass);
+        model.addAttribute("raceVariety", race.getRaceVarietiesSet().size());
 
         characterRepos.save(character);
         return "characterRes";
@@ -153,6 +153,7 @@ public class CharacterController {
 
     @PostMapping("/class/goEnd")
     public String goEnd(@RequestParam Long classId, @RequestParam int level, Model model){
+
         Character character = characterRepos.findByName("CharacterCreate");
         character.setClassId(classId);
         character.setLevel(level);
