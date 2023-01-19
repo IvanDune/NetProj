@@ -29,6 +29,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/game">Game</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="character/create">Create</a>
+            </li>
 
             <#if isAdmin>
             <li class="nav-item">

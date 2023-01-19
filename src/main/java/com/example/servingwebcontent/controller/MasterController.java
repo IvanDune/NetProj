@@ -1,10 +1,10 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.Grade;
-import com.example.servingwebcontent.domain.Message;
+import com.example.servingwebcontent.domain.Review;
+import com.example.servingwebcontent.domain.Role;
 import com.example.servingwebcontent.domain.User;
-import com.example.servingwebcontent.repos.GradeRepos;
-import com.example.servingwebcontent.repos.MessageRepos;
+import com.example.servingwebcontent.repos.ReviewRepos;
+import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,41 +14,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("/master")
 public class MasterController {
     @Autowired
-    MessageRepos messageRepos;
+    UserRepos userRepos;
 
     @Autowired
-    GradeRepos gradeRepos;
+    ReviewRepos reviewRepos;
 
     @GetMapping
     public String main(@AuthenticationPrincipal User user, Model model){
-        Iterable<Message> messages = messageRepos.findAll();
-        model.addAttribute("messages",messages);
-
-        Set<Integer> exist = new HashSet<>();
-        for (Message mes : messageRepos.findByAuthor(user.getLogin()))
-            exist.add(mes.getNumber());
-
-//        int i =1;
-        String s = "";
-        for (Grade gr : gradeRepos.findAll()){
-            s = "grade" + gr.getMasterNumber();
-//            i++;
-            model.addAttribute(s, gr.getMean());
+        List masters = new ArrayList<>();
+        for (User usr : userRepos.findAll()){
+            if(usr.getRoles().contains(Role.MASTER)){
+                masters.add(usr);
+            }
         }
-
-        model.addAttribute("exist1", exist.contains(1));
-        model.addAttribute("exist2", exist.contains(2));
-        model.addAttribute("exist3", exist.contains(3));
-        model.addAttribute("exist4", exist.contains(4));
+        Collections.sort(masters);
+        model.addAttribute("masters",masters);
+        model.addAttribute("userChannel",user);
 
         return "master";
     }
@@ -58,47 +45,43 @@ public class MasterController {
             @AuthenticationPrincipal User user,
             @RequestParam Integer gr,
             @RequestParam String mess,
-            @RequestParam Integer number, Model model){
+            @RequestParam String masterLogin, Model model){
         if(gr==null){
-            Iterable<Message> messages = messageRepos.findAll();
-            Set<Integer> exist = new HashSet<>();
-            for (Message mes : messageRepos.findByAuthor(user.getLogin()))
-                exist.add(mes.getNumber());
+            List<User> masters = new ArrayList<>();
+            for (User usr : userRepos.findAll()){
+                if(usr.getRoles().contains("MASTER")){
+                    masters.add(usr);
+                }
+            }
+            model.addAttribute("masters",masters);
+            model.addAttribute("userChannel",user);
             model.addAttribute("noMessage", "Enter your grade");
-            model.addAttribute("messages",messages);
-            model.addAttribute("exist1", exist.contains(1));
-            model.addAttribute("exist2", exist.contains(2));
-            model.addAttribute("exist3", exist.contains(3));
-            model.addAttribute("exist4", exist.contains(4));
+
             return "master";
         }
         if (mess==""){
-            Iterable<Message> messages = messageRepos.findAll();
-            Set<Integer> exist = new HashSet<>();
-            for (Message mes : messageRepos.findByAuthor(user.getLogin()))
-                exist.add(mes.getNumber());
+            List<User> masters = new ArrayList<>();
+            for (User usr : userRepos.findAll()){
+                if(usr.getRoles().contains("MASTER")){
+                    masters.add(usr);
+                }
+            }
+            model.addAttribute("masters",masters);
+            model.addAttribute("userChannel",user);
             model.addAttribute("noMessage", "Enter your review and grade");
-            model.addAttribute("messages",messages);
-            model.addAttribute("exist1", exist.contains(1));
-            model.addAttribute("exist2", exist.contains(2));
-            model.addAttribute("exist3", exist.contains(3));
-            model.addAttribute("exist4", exist.contains(4));
+
             return "master";
         }
 
-        Message message = new Message(mess,user.getLogin(),number);
-        Grade grade = gradeRepos.findByMasterNumber(number);
-        if(grade!=null)
-            grade.addGrade(gr);
-        else
-            grade = new Grade(number, gr);
+        Review review = new Review(mess, gr, masterLogin,user.getLogin());
+        reviewRepos.save(review);
+
+        User usr = userRepos.findByLogin(masterLogin);
+        usr.changeVote(review);
 
 
-        gradeRepos.save(grade);
-        messageRepos.save(message);
+        userRepos.save(usr);
 
-        Iterable<Message> messages = messageRepos.findAll();
-        model.addAttribute("messages",messages);
 
         return "redirect:/master";
     }

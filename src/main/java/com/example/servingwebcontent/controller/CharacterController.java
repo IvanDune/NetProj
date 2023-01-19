@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -40,6 +42,34 @@ public class CharacterController {
     int[] characteristics = new int[6];
     int[] characteristicsMod = new int[6];
 
+    @GetMapping("/create")
+    public String create(@AuthenticationPrincipal User user, Model model){
+        for (int i = 0; i < 6; i++){
+            characteristics[i] = Randomizer.characteristic();
+            characteristicsMod[i] = Randomizer.characteristicMod(characteristics[i]);
+            numberRepos.save(new DHNumber(characteristics[i]));
+        }
+        Character ch = characterRepos.findByName("CharacterCreate");
+        if (ch != null)
+            characterRepos.delete(ch);
+
+        List<String> chEn = new ArrayList<>();
+        Iterable<Race> races = raceRepos.findAll();
+        Iterable<ChaClass> chaClasses = chaClassRepos.findAll();
+
+        for (CharacteristicEnum characteristicEnum : CharacteristicEnum.values()){
+            chEn.add(characteristicEnum.name());
+        }
+
+        model.addAttribute("clazzes", chaClasses);
+        model.addAttribute("user",user);
+        model.addAttribute("races",races);
+        model.addAttribute("charEns", chEn);
+        model.addAttribute("characteristics",characteristics);
+        model.addAttribute("characteristicsMod",characteristicsMod);
+        return "charCreate";
+    }
+
     @GetMapping
     public String main(@AuthenticationPrincipal User user, Model model){
 
@@ -51,6 +81,10 @@ public class CharacterController {
         Character ch = characterRepos.findByName("CharacterCreate");
         if (ch != null)
             characterRepos.delete(ch);
+
+        Iterable<Race> races = raceRepos.findAll();
+
+        model.addAttribute("races",races);
         model.addAttribute("user",user);
         model.addAttribute("characteristics",characteristics);
         model.addAttribute("characteristicsMod",characteristicsMod);

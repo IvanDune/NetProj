@@ -9,7 +9,7 @@ import java.util.*;
 
 @Table(name="user", schema = "public")
 @Entity
-public class User implements UserDetails {
+public class User implements UserDetails, Comparable<User>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +31,15 @@ public class User implements UserDetails {
     @Column(name="active")
     private Boolean active;
 
+    @Column(name="description")
+    private String description;
+
+//    @Column(name="numVote") // Number of vote
+//    private Integer numVote;
+
+    @Column(name="grade") // Final grade
+    private Integer grade;
+
     @Column(name="characterId")
     @OneToMany
     @CollectionTable(name = "user_character", joinColumns = @JoinColumn(name = "character_id"))
@@ -41,6 +50,11 @@ public class User implements UserDetails {
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    @Column(name = "reviews")
+    @OneToMany
+    @CollectionTable(name = "reviews", joinColumns = @JoinColumn(name = "master"))
+    private Set<Review> reviews;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -58,6 +72,7 @@ public class User implements UserDetails {
         this.password = password;
         this.nickname = nickname;
         this.email = email;
+        this.grade = 0;
     }
 
     public Integer gameValue(){
@@ -95,6 +110,15 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setGrade(Integer grade){
+        if (roles.contains("MASTER"))
+            this.grade = grade;
+    }
+
+    public Integer getGrade(){
+        return grade;
     }
 
 
@@ -135,7 +159,38 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+
+    public void changeVote(Review review){ // Plus new vote
+        if (roles.contains(Role.MASTER)){
+            int allVotes = grade * reviews.size()  + review.getGrade();
+            reviews.add(review);
+            grade = (allVotes)/(reviews.size());
+
+        }
+    }
+
+    public void changeVote(Review oldReview, Review newReview){ // Change old vote
+        if (roles.contains("MASTER")){
+            int allVotes = grade * reviews.size()  + newReview.getGrade() - oldReview.getGrade();
+            grade = (allVotes)/(reviews.size()+1);
+        }
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -181,5 +236,10 @@ public class User implements UserDetails {
 
     public void setCharacters(Set<Character> characters) {
         this.characters = characters;
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return id.compareTo(user.getId());
     }
 }
