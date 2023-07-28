@@ -1,7 +1,7 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.Role;
-import com.example.servingwebcontent.domain.User;
+import com.example.servingwebcontent.dto.Role;
+import com.example.servingwebcontent.dto.User;
 import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
-import java.util.Map;
 
 @Controller
 public class RegistrationController {

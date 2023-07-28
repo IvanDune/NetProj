@@ -1,8 +1,8 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.User;
-import com.example.servingwebcontent.domain.dnd.characters.*;
-import com.example.servingwebcontent.domain.dnd.characters.Character;
+import com.example.servingwebcontent.dto.User;
+import com.example.servingwebcontent.dto.dnd.characters.*;
+import com.example.servingwebcontent.dto.dnd.characters.Character;
 import com.example.servingwebcontent.logic.Randomizer;
 import com.example.servingwebcontent.repos.UserRepos;
 import com.example.servingwebcontent.repos.dnd.*;
@@ -45,8 +45,8 @@ public class CharacterController {
     @GetMapping("/create")
     public String create(@AuthenticationPrincipal User user, Model model){
         for (int i = 0; i < 6; i++){
-            characteristics[i] = Randomizer.characteristic();
-            characteristicsMod[i] = Randomizer.characteristicMod(characteristics[i]);
+            characteristics[i] = Randomizer.characteristicDnd();
+            characteristicsMod[i] = Randomizer.characteristicDndMod(characteristics[i]);
             numberRepos.save(new DHNumber(characteristics[i]));
         }
         Character ch = characterRepos.findByName("CharacterCreate");
@@ -74,8 +74,8 @@ public class CharacterController {
     public String main(@AuthenticationPrincipal User user, Model model){
 
         for (int i = 0; i < 6; i++){
-            characteristics[i] = Randomizer.characteristic();
-            characteristicsMod[i] = Randomizer.characteristicMod(characteristics[i]);
+            characteristics[i] = Randomizer.characteristicDnd();
+            characteristicsMod[i] = Randomizer.characteristicDndMod(characteristics[i]);
             numberRepos.save(new DHNumber(characteristics[i]));
         }
         Character ch = characterRepos.findByName("CharacterCreate");

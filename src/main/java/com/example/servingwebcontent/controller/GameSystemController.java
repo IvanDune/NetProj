@@ -1,7 +1,6 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.Game;
-import com.example.servingwebcontent.domain.GameSystem;
+import com.example.servingwebcontent.dto.GameSystem;
 import com.example.servingwebcontent.repos.GameSystemRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

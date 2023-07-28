@@ -1,9 +1,7 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.dnd.characters.Character;
-import com.example.servingwebcontent.domain.dnd.characters.Characteristics;
-import com.example.servingwebcontent.domain.dnd.characters.DHNumber;
-import com.example.servingwebcontent.domain.dnd.characters.Race;
+import com.example.servingwebcontent.dto.dnd.characters.Character;
+import com.example.servingwebcontent.dto.dnd.characters.DHNumber;
 import com.example.servingwebcontent.repos.dnd.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 @Controller
