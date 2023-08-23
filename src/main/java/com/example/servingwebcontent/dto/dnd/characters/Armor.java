@@ -1,8 +1,16 @@
 package com.example.servingwebcontent.dto.dnd.characters;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name="armor")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Armor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,10 +38,6 @@ public class Armor {
     @Column(name="weight")
     private int weight;
 
-    public Armor(){
-
-    }
-
     public Armor(String name, String type, int baseAC, int price, int strength, boolean disadvantage, int weight) {
         this.name = name;
         this.type = type;
@@ -44,67 +48,5 @@ public class Armor {
         this.weight=weight;
     }
 
-    public Long getId() {
-        return Id;
-    }
 
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getBaseAC() {
-        return baseAC;
-    }
-
-    public void setBaseAC(int baseAC) {
-        this.baseAC = baseAC;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public boolean isDisadvantage() {
-        return disadvantage;
-    }
-
-    public void setDisadvantage(boolean disadvantage) {
-        this.disadvantage = disadvantage;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
 }

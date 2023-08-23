@@ -1,9 +1,17 @@
 package com.example.servingwebcontent.dto.dnd.characters;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name="race_variety")
+@Getter
+@Setter
+@NoArgsConstructor
 public class RaceVarieties {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,10 +35,6 @@ public class RaceVarieties {
     @CollectionTable(name = "raceVariety_abilities", joinColumns = @JoinColumn(name = "raceVariety_id"))
     private Set<RaceAbilities> raceAbilitiesSet;
 
-    public RaceVarieties(){
-
-    }
-
     public RaceVarieties(String name) {
         this.name = name;
     }
@@ -40,45 +44,5 @@ public class RaceVarieties {
         this.buffs = buffs;
         this.raceAbilitiesSet = raceAbilitiesSet;
         this.description=description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<CharacteristicBuff> getBuffs() {
-        return buffs;
-    }
-
-    public void setBuffs(Set<CharacteristicBuff> buffs) {
-        this.buffs = buffs;
-    }
-
-    public Set<RaceAbilities> getRaceAbilitiesSet() {
-        return raceAbilitiesSet;
-    }
-
-    public void setRaceAbilitiesSet(Set<RaceAbilities> raceAbilitiesSet) {
-        this.raceAbilitiesSet = raceAbilitiesSet;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

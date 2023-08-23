@@ -1,9 +1,17 @@
 package com.example.servingwebcontent.dto.dnd.characters;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name="weapon")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Weapon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,10 +47,6 @@ public class Weapon {
     @CollectionTable(name = "weapon_property", joinColumns = @JoinColumn(name = "weapon_id"))
     private Set<WeaponProperties> weaponPropertiesSet;
 
-    public Weapon(){
-
-    }
-
     public Weapon(String name, int price, int valueDamage, int diceDamage, int mod, int weight, boolean military, boolean longRange) {
         this.name = name;
         this.price = price;
@@ -52,85 +56,5 @@ public class Weapon {
         this.weight = weight;
         this.military = military;
         this.longRange = longRange;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getValueDamage() {
-        return valueDamage;
-    }
-
-    public void setValueDamage(int valueDamage) {
-        this.valueDamage = valueDamage;
-    }
-
-    public int getDiceDamage() {
-        return diceDamage;
-    }
-
-    public void setDiceDamage(int diceDamage) {
-        this.diceDamage = diceDamage;
-    }
-
-    public int getMod() {
-        return mod;
-    }
-
-    public void setMod(int mod) {
-        this.mod = mod;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public boolean isMilitary() {
-        return military;
-    }
-
-    public void setMilitary(boolean military) {
-        this.military = military;
-    }
-
-    public boolean isLongRange() {
-        return longRange;
-    }
-
-    public void setLongRange(boolean longRange) {
-        this.longRange = longRange;
-    }
-
-    public Set<WeaponProperties> getWeaponPropertiesSet() {
-        return weaponPropertiesSet;
-    }
-
-    public void setWeaponPropertySet(Set<WeaponProperties> weaponPropertiesSet) {
-        this.weaponPropertiesSet = weaponPropertiesSet;
     }
 }
