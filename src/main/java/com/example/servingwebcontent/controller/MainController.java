@@ -1,7 +1,7 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.Role;
-import com.example.servingwebcontent.domain.User;
+import com.example.servingwebcontent.dto.Role;
+import com.example.servingwebcontent.dto.User;
 import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

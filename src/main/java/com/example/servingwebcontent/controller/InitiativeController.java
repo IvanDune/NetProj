@@ -1,7 +1,7 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.dnd.characters.Enemy;
-import com.example.servingwebcontent.domain.dnd.characters.Essence;
+import com.example.servingwebcontent.dto.dnd.characters.Enemy;
+import com.example.servingwebcontent.dto.dnd.characters.Essence;
 import com.example.servingwebcontent.logic.Randomizer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

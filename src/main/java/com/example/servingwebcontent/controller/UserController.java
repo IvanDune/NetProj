@@ -1,11 +1,11 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.Game;
-import com.example.servingwebcontent.domain.Role;
-import com.example.servingwebcontent.domain.User;
-import com.example.servingwebcontent.domain.dnd.characters.ChaClass;
-import com.example.servingwebcontent.domain.dnd.characters.Character;
-import com.example.servingwebcontent.domain.dnd.characters.Race;
+import com.example.servingwebcontent.dto.Game;
+import com.example.servingwebcontent.dto.Role;
+import com.example.servingwebcontent.dto.User;
+import com.example.servingwebcontent.dto.dnd.characters.ChaClass;
+import com.example.servingwebcontent.dto.dnd.characters.Character;
+import com.example.servingwebcontent.dto.dnd.characters.Race;
 import com.example.servingwebcontent.repos.GameRepos;
 import com.example.servingwebcontent.repos.UserRepos;
 import com.example.servingwebcontent.repos.dnd.ChaClassRepos;

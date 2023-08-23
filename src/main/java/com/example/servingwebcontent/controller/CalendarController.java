@@ -1,8 +1,8 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.Game;
-import com.example.servingwebcontent.domain.System;
-import com.example.servingwebcontent.domain.User;
+import com.example.servingwebcontent.dto.Game;
+import com.example.servingwebcontent.dto.System;
+import com.example.servingwebcontent.dto.User;
 import com.example.servingwebcontent.repos.GameRepos;
 import com.example.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,11 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
-public class    CalendarController {
+public class CalendarController {
     @Autowired
     private GameRepos gameRepos;
-
     @Autowired
     private UserRepos userRepos;
-
     @GetMapping("calendar")
     public String main(@AuthenticationPrincipal User user, Model model){
         Iterable<Game> games = gameRepos.findAll();

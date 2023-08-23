@@ -1,6 +1,6 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.domain.dnd.characters.DHNumber;
+import com.example.servingwebcontent.dto.dnd.characters.DHNumber;
 import com.example.servingwebcontent.logic.Randomizer;
 import com.example.servingwebcontent.repos.dnd.NumberRepos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller

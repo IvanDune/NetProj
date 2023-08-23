@@ -1,14 +1,8 @@
 package com.example.servingwebcontent.repos;
 
-import com.example.servingwebcontent.domain.User;
+import com.example.servingwebcontent.dto.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
-
 
 public interface UserRepos extends JpaRepository<User, Long> {
     User findByLogin(String login);
-
-
 }
