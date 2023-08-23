@@ -1,0 +1,1115 @@
+databaseChangeLog:
+  changeSet:
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: user_character_pkey
+            _name: character_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: user_character_pkey
+            _name: characters_id
+            _type: BIGINT
+        _tableName: user_character
+      _author: Lenovo (generated)
+      _id: 1692781944122-1
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: weapon_property_pkey
+            _name: weapon_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: weapon_property_pkey
+            _name: weapon_property_set_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+            _name: weapon_properties_set_id
+            _type: BIGINT
+        _tableName: weapon_property
+      _author: Lenovo (generated)
+      _id: 1692781944122-2
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_variety_pkey
+            _name: race_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_variety_pkey
+            _name: race_varieties_set_id
+            _type: BIGINT
+        _tableName: race_variety
+      _author: Lenovo (generated)
+      _id: 1692781944122-3
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_ability_pkey
+            _name: race_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_ability_pkey
+            _name: race_abilities_set_id
+            _type: BIGINT
+        _tableName: race_ability
+      _author: Lenovo (generated)
+      _id: 1692781944122-4
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_variety_abilities_pkey
+            _name: race_variety_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_variety_abilities_pkey
+            _name: race_abilities_set_id
+            _type: BIGINT
+        _tableName: race_variety_abilities
+      _author: Lenovo (generated)
+      _id: 1692781944122-5
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: reviews_pkey
+            _name: master
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: reviews_pkey
+            _name: reviews_id
+            _type: BIGINT
+        _tableName: reviews
+      _author: Lenovo (generated)
+      _id: 1692781944122-6
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: class_ability_pkey
+            _name: class_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: class_ability_pkey
+            _name: class_abilities_set_id
+            _type: BIGINT
+        _tableName: class_ability
+      _author: Lenovo (generated)
+      _id: 1692781944122-7
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_variety_buff_pkey
+            _name: race_variety_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_variety_buff_pkey
+            _name: race_abilities_set_id
+            _type: BIGINT
+          - _name: buffs
+            _type: VARCHAR(255)
+          - constraints:
+              _nullable: 'false'
+            _name: buffs_id
+            _type: BIGINT
+        _tableName: race_variety_buff
+      _author: Lenovo (generated)
+      _id: 1692781944122-8
+    - addUniqueConstraint:
+        _columnNames: characters_id
+        _constraintName: uk_8jhk5la0d778fiwx5myssea3b
+        _tableName: user_character
+      _author: Lenovo (generated)
+      _id: 1692781944122-9
+    - addUniqueConstraint:
+        _columnNames: weapon_properties_set_id
+        _constraintName: uk_drgheoevcjt1mc3ncq6tn79r4
+        _tableName: weapon_property
+      _author: Lenovo (generated)
+      _id: 1692781944122-10
+    - addUniqueConstraint:
+        _columnNames: race_varieties_set_id
+        _constraintName: uk_e2a9l6pqooyytfp46anpghso4
+        _tableName: race_variety
+      _author: Lenovo (generated)
+      _id: 1692781944122-11
+    - addUniqueConstraint:
+        _columnNames: race_abilities_set_id
+        _constraintName: uk_hk5eyi6grs014xtulc45nb8bo
+        _tableName: race_ability
+      _author: Lenovo (generated)
+      _id: 1692781944122-12
+    - addUniqueConstraint:
+        _columnNames: race_abilities_set_id
+        _constraintName: uk_jx8m4t3eqjxr4y1wvovi6t9sy
+        _tableName: race_variety_abilities
+      _author: Lenovo (generated)
+      _id: 1692781944122-13
+    - addUniqueConstraint:
+        _columnNames: reviews_id
+        _constraintName: uk_kq2lqep9gl0fol0xfmqfpm1ib
+        _tableName: reviews
+      _author: Lenovo (generated)
+      _id: 1692781944122-14
+    - addUniqueConstraint:
+        _columnNames: class_abilities_set_id
+        _constraintName: uk_nhrd6ctemm23ohc365u3vcg7i
+        _tableName: class_ability
+      _author: Lenovo (generated)
+      _id: 1692781944122-15
+    - addUniqueConstraint:
+        _columnNames: race_abilities_set_id
+        _constraintName: uk_q4bvc1vtn0hbgbdy005mxrw2y
+        _tableName: race_variety_buff
+      _author: Lenovo (generated)
+      _id: 1692781944122-16
+    - createSequence:
+        _cacheSize: '1'
+        _cycle: 'false'
+        _dataType: bigint
+        _incrementBy: '1'
+        _maxValue: '9223372036854775807'
+        _minValue: '1'
+        _sequenceName: hibernate_sequence
+        _startValue: '1'
+      _author: Lenovo (generated)
+      _id: 1692781944122-17
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: armor_pkey
+            _name: id
+            _type: BIGINT
+          - _name: baseac
+            _type: INTEGER
+          - _name: disadvantage
+            _type: BOOLEAN
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: price
+            _type: INTEGER
+          - _name: strength
+            _type: INTEGER
+          - _name: type
+            _type: VARCHAR(255)
+          - _name: weight
+            _type: INTEGER
+        _tableName: armor
+      _author: Lenovo (generated)
+      _id: 1692781944122-18
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: cha_class_pkey
+            _autoIncrement: 'true'
+            _name: id
+            _type: BIGINT
+          - _name: description
+            _type: VARCHAR(255)
+          - _name: hit_dice
+            _type: INTEGER
+          - _name: name
+            _type: VARCHAR(255)
+        _tableName: cha_class
+      _author: Lenovo (generated)
+      _id: 1692781944122-19
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: character_pkey
+            _name: id
+            _type: BIGINT
+          - _name: characteristics
+            _type: BIGINT
+          - _name: class
+            _type: BIGINT
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: race
+            _type: BIGINT
+          - _name: user_id
+            _type: BIGINT
+          - _name: race_variety
+            _type: BIGINT
+          - _name: class_name
+            _type: VARCHAR(255)
+          - _name: level
+            _type: INTEGER
+          - _name: race_name
+            _type: VARCHAR(255)
+        _tableName: character
+      _author: Lenovo (generated)
+      _id: 1692781944122-20
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: characteristic_buff_pkey
+            _name: id
+            _type: BIGINT
+          - _name: mod
+            _type: INTEGER
+          - _name: name
+            _type: VARCHAR(255)
+        _tableName: characteristic_buff
+      _author: Lenovo (generated)
+      _id: 1692781944122-21
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: characteristics_pkey
+            _name: id
+            _type: BIGINT
+          - _name: charisma
+            _type: INTEGER
+          - _name: charisma_mod
+            _type: INTEGER
+          - _name: constitution
+            _type: INTEGER
+          - _name: constitution_mod
+            _type: INTEGER
+          - _name: dexterity
+            _type: INTEGER
+          - _name: dexterity_mod
+            _type: INTEGER
+          - _name: essence_id
+            _type: BIGINT
+          - _name: intelligence
+            _type: INTEGER
+          - _name: intelligence_mod
+            _type: INTEGER
+          - _name: strength
+            _type: INTEGER
+          - _name: strength_mod
+            _type: INTEGER
+          - _name: wisdom
+            _type: INTEGER
+          - _name: wisdom_mod
+            _type: INTEGER
+        _tableName: characteristics
+      _author: Lenovo (generated)
+      _id: 1692781944122-22
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: class_abilities_pkey
+            _name: id
+            _type: BIGINT
+          - _name: description
+            _type: VARCHAR(255)
+          - _name: level
+            _type: INTEGER
+          - _name: name
+            _type: VARCHAR(255)
+        _tableName: class_abilities
+      _author: Lenovo (generated)
+      _id: 1692781944122-23
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: class_id
+            _type: BIGINT
+          - _name: saves
+            _type: VARCHAR(255)
+        _tableName: class_armors
+      _author: Lenovo (generated)
+      _id: 1692781944122-24
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: class_id
+            _type: BIGINT
+          - _name: saves
+            _type: VARCHAR(255)
+        _tableName: class_saves
+      _author: Lenovo (generated)
+      _id: 1692781944122-25
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: class_id
+            _type: BIGINT
+          - _name: saves
+            _type: VARCHAR(255)
+        _tableName: class_skills
+      _author: Lenovo (generated)
+      _id: 1692781944122-26
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: class_id
+            _type: BIGINT
+          - _name: saves
+            _type: VARCHAR(255)
+        _tableName: class_tools
+      _author: Lenovo (generated)
+      _id: 1692781944122-27
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: class_id
+            _type: BIGINT
+          - _name: saves
+            _type: VARCHAR(255)
+        _tableName: class_weapon
+      _author: Lenovo (generated)
+      _id: 1692781944122-28
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: dhnumber_pkey
+            _name: id
+            _type: BIGINT
+          - _name: num
+            _type: INTEGER
+        _tableName: dhnumber
+      _author: Lenovo (generated)
+      _id: 1692781944122-29
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: equipment_pkey
+            _name: id
+            _type: BIGINT
+          - _name: description
+            _type: VARCHAR(255)
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: price
+            _type: INTEGER
+          - _name: weight
+            _type: INTEGER
+        _tableName: equipment
+      _author: Lenovo (generated)
+      _id: 1692781944122-30
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: game_pkey
+            _name: id
+            _type: BIGINT
+          - _name: date_time
+            _type: TIMESTAMP WITHOUT TIME ZONE
+          - _name: description
+            _type: VARCHAR(2048)
+          - _name: discord
+            _type: VARCHAR(2048)
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: system
+            _type: VARCHAR(255)
+        _tableName: game
+      _author: Lenovo (generated)
+      _id: 1692781944122-31
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: game_system_pkey
+            _name: id
+            _type: BIGINT
+          - _name: comments
+            _type: VARCHAR(255)
+          - _name: description
+            _type: VARCHAR(255)
+          - _name: dices
+            _type: VARCHAR(255)
+          - _name: name
+            _type: VARCHAR(255)
+        _tableName: game_system
+      _author: Lenovo (generated)
+      _id: 1692781944122-32
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: grade_pkey
+            _name: id
+            _type: INTEGER
+          - _name: value
+            _type: INTEGER
+          - _name: mean
+            _type: FLOAT8
+          - _name: master_number
+            _type: INTEGER
+        _tableName: grade
+      _author: Lenovo (generated)
+      _id: 1692781944122-33
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: message_pkey
+            _name: id
+            _type: BIGINT
+          - _name: num
+            _type: INTEGER
+          - constraints:
+              _nullable: 'false'
+            _name: text
+            _type: VARCHAR(2048)
+          - _name: author
+            _type: VARCHAR(255)
+        _tableName: message
+      _author: Lenovo (generated)
+      _id: 1692781944122-34
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_pkey
+            _autoIncrement: 'true'
+            _name: id
+            _type: BIGINT
+          - _name: age
+            _type: INTEGER
+          - _name: description
+            _type: VARCHAR(1000)
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: speed
+            _type: INTEGER
+        _tableName: race
+      _author: Lenovo (generated)
+      _id: 1692781944122-35
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_abilities_pkey
+            _autoIncrement: 'true'
+            _name: id
+            _type: BIGINT
+          - _name: description
+            _type: VARCHAR(1000)
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: race_id
+            _type: BIGINT
+        _tableName: race_abilities
+      _author: Lenovo (generated)
+      _id: 1692781944122-36
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: race_id
+            _type: BIGINT
+          - _name: buffs
+            _type: VARCHAR(255)
+          - constraints:
+              _nullable: 'false'
+            _name: buffs_id
+            _type: BIGINT
+        _tableName: race_buff
+      _author: Lenovo (generated)
+      _id: 1692781944122-37
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: race_varieties_pkey
+            _name: id
+            _type: BIGINT
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: description
+            _type: VARCHAR(255)
+        _tableName: race_varieties
+      _author: Lenovo (generated)
+      _id: 1692781944122-38
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: review_pkey
+            _name: id
+            _type: BIGINT
+          - _name: author
+            _type: VARCHAR(255)
+          - constraints:
+              _nullable: 'false'
+            _name: grade
+            _type: INTEGER
+          - _name: master
+            _type: VARCHAR(255)
+          - _name: message
+            _type: VARCHAR(255)
+        _tableName: review
+      _author: Lenovo (generated)
+      _id: 1692781944122-39
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: spell_pkey
+            _name: id
+            _type: BIGINT
+          - _name: components
+            _type: VARCHAR(255)
+          - _name: duration
+            _type: VARCHAR(255)
+          - _name: level
+            _type: INTEGER
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: range
+            _type: VARCHAR(255)
+          - _name: school
+            _type: VARCHAR(255)
+          - _name: spell_casting_time
+            _type: VARCHAR(255)
+        _tableName: spell
+      _author: Lenovo (generated)
+      _id: 1692781944122-40
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: spell_id
+            _type: BIGINT
+          - _name: classes
+            _type: VARCHAR(255)
+        _tableName: spell_classes
+      _author: Lenovo (generated)
+      _id: 1692781944122-41
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: user_pkey
+            _name: id
+            _type: BIGINT
+          - _name: active
+            _type: BOOLEAN
+          - _name: email
+            _type: VARCHAR(255)
+          - constraints:
+              _nullable: 'false'
+            _name: login
+            _type: VARCHAR(255)
+          - constraints:
+              _nullable: 'false'
+            _name: nickname
+            _type: VARCHAR(255)
+          - constraints:
+              _nullable: 'false'
+            _name: password
+            _type: VARCHAR(255)
+          - _name: description
+            _type: VARCHAR(255)
+          - _name: grade
+            _type: INTEGER
+        _tableName: user
+      _author: Lenovo (generated)
+      _id: 1692781944122-42
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: user_id
+            _type: BIGINT
+          - _name: roles
+            _type: VARCHAR(255)
+        _tableName: user_role
+      _author: Lenovo (generated)
+      _id: 1692781944122-43
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+            _name: user_id
+            _type: BIGINT
+          - constraints:
+              _nullable: 'false'
+            _name: game_id
+            _type: BIGINT
+        _tableName: user_sub
+      _author: Lenovo (generated)
+      _id: 1692781944122-44
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: weapon_pkey
+            _name: id
+            _type: BIGINT
+          - _name: dice_damage
+            _type: INTEGER
+          - _name: long_range
+            _type: BOOLEAN
+          - _name: military
+            _type: BOOLEAN
+          - _name: mod
+            _type: INTEGER
+          - _name: name
+            _type: VARCHAR(255)
+          - _name: price
+            _type: INTEGER
+          - _name: value_damage
+            _type: INTEGER
+          - _name: weight
+            _type: INTEGER
+        _tableName: weapon
+      _author: Lenovo (generated)
+      _id: 1692781944122-45
+    - createTable:
+        column:
+          - constraints:
+              _nullable: 'false'
+              _primaryKey: 'true'
+              _primaryKeyName: weapon_properties_pkey
+            _name: id
+            _type: BIGINT
+          - _name: description
+            _type: VARCHAR(255)
+          - _name: name
+            _type: VARCHAR(255)
+        _tableName: weapon_properties
+      _author: Lenovo (generated)
+      _id: 1692781944122-46
+    - addPrimaryKey:
+        _columnNames: 'game_id, user_id'
+        _constraintName: user_sub_pkey
+        _tableName: user_sub
+      _author: Lenovo (generated)
+      _id: 1692781944122-47
+    - addForeignKeyConstraint:
+        _baseColumnNames: weapon_id
+        _baseTableName: weapon_property
+        _constraintName: fk173mjt87j9lqk9st3s9ep6qha
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: weapon
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-48
+    - addForeignKeyConstraint:
+        _baseColumnNames: weapon_properties_set_id
+        _baseTableName: weapon_property
+        _constraintName: fk27a2trvxnnsho7dp95qupetw7
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: weapon_properties
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-49
+    - addForeignKeyConstraint:
+        _baseColumnNames: game_id
+        _baseTableName: user_sub
+        _constraintName: fk2guxlbwqygqeh0ea883vs9gfl
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: game
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-50
+    - addForeignKeyConstraint:
+        _baseColumnNames: class_id
+        _baseTableName: class_armors
+        _constraintName: fk2o6w5okewfxr7fm1w88xfbop0
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: cha_class
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-51
+    - addForeignKeyConstraint:
+        _baseColumnNames: character_id
+        _baseTableName: user_character
+        _constraintName: fk3biw8y8b43y4oi7kjlonomqd5
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: user
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-52
+    - addForeignKeyConstraint:
+        _baseColumnNames: characters_id
+        _baseTableName: user_character
+        _constraintName: fk6lnodwr1emmabro73466xrkhy
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: character
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-53
+    - addForeignKeyConstraint:
+        _baseColumnNames: spell_id
+        _baseTableName: spell_classes
+        _constraintName: fk7h0xg2l0vh63ld0hwg9eullj7
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: spell
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-54
+    - addForeignKeyConstraint:
+        _baseColumnNames: class_id
+        _baseTableName: class_tools
+        _constraintName: fk7qtiip0bwf917s8dgxwo5dsko
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: cha_class
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-55
+    - addForeignKeyConstraint:
+        _baseColumnNames: class_id
+        _baseTableName: class_ability
+        _constraintName: fk9g0ikn76jiv911fijdboiyird
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: cha_class
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-56
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_abilities_set_id
+        _baseTableName: race_variety_abilities
+        _constraintName: fkagdp1yyygyvwuw9corbs8qgu9
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race_abilities
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-57
+    - addForeignKeyConstraint:
+        _baseColumnNames: class_abilities_set_id
+        _baseTableName: class_ability
+        _constraintName: fkbjsaehcwvq09ume7vhqvncvaf
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: class_abilities
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-58
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_varieties_set_id
+        _baseTableName: race_variety
+        _constraintName: fkc1ldugid5u2tvqmgtj1wer77e
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race_varieties
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-59
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_id
+        _baseTableName: race_variety
+        _constraintName: fkh6ldr0wmlgx2neaqwroag9kb4
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-60
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_variety_id
+        _baseTableName: race_variety_abilities
+        _constraintName: fkh8p9ihuvk3e1ouqws91rel65r
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race_varieties
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-61
+    - addForeignKeyConstraint:
+        _baseColumnNames: class_id
+        _baseTableName: class_skills
+        _constraintName: fkih1ibhmq4qcycnawlei6m9pre
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: cha_class
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-62
+    - addForeignKeyConstraint:
+        _baseColumnNames: reviews_id
+        _baseTableName: reviews
+        _constraintName: fkjclmy5qvql6ar58iu83e73v8v
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: review
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-63
+    - addForeignKeyConstraint:
+        _baseColumnNames: class_id
+        _baseTableName: class_weapon
+        _constraintName: fkmhy9uo9hreodclt9trbe6cdvr
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: cha_class
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-64
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_id
+        _baseTableName: race_ability
+        _constraintName: fkmpe1tvsqfo3f27bkueff337nt
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-65
+    - addForeignKeyConstraint:
+        _baseColumnNames: class_id
+        _baseTableName: class_saves
+        _constraintName: fkmvpdxvjyyxpaqo249punhnvwx
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: cha_class
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-66
+    - addForeignKeyConstraint:
+        _baseColumnNames: user_id
+        _baseTableName: user_sub
+        _constraintName: fkqkds8nebt4xox98oxpb3pnb2r
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: user
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-67
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_id
+        _baseTableName: race_buff
+        _constraintName: fkrbl91opmts9tdm1y2umdh1yph
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-68
+    - addForeignKeyConstraint:
+        _baseColumnNames: buffs_id
+        _baseTableName: race_buff
+        _constraintName: fkrl0xalae7veh2xifbb31udi1e
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: characteristic_buff
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-69
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_abilities_set_id
+        _baseTableName: race_variety_buff
+        _constraintName: fksihfvpkg0k12w5xgvlutq0mjq
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race_abilities
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-70
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_variety_id
+        _baseTableName: race_variety_buff
+        _constraintName: fksjmn4gu2d2yr4ny70r2fd8t9x
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race_varieties
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-71
+    - addForeignKeyConstraint:
+        _baseColumnNames: buffs_id
+        _baseTableName: race_variety_buff
+        _constraintName: fksmckjqttgudr1wu91e9vj7gv9
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: characteristic_buff
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-72
+    - addForeignKeyConstraint:
+        _baseColumnNames: race_abilities_set_id
+        _baseTableName: race_ability
+        _constraintName: fkt7cy8brkh630h81wh0fwr613
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: race_abilities
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-73
+    - addForeignKeyConstraint:
+        _baseColumnNames: master
+        _baseTableName: reviews
+        _constraintName: fktqhxi8b88t1vwy11409dvh7f9
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: user
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-74
+    - addForeignKeyConstraint:
+        _baseColumnNames: user_id
+        _baseTableName: user_role
+        _constraintName: user_role_user_fk
+        _deferrable: 'false'
+        _initiallyDeferred: 'false'
+        _onDelete: NO ACTION
+        _onUpdate: NO ACTION
+        _referencedColumnNames: id
+        _referencedTableName: user
+        _validate: 'true'
+      _author: Lenovo (generated)
+      _id: 1692781944122-75
+  _xmlns: 'http://www.liquibase.org/xml/ns/dbchangelog'
+  '_xmlns:ext': 'http://www.liquibase.org/xml/ns/dbchangelog-ext'
+  '_xmlns:pro': 'http://www.liquibase.org/xml/ns/pro'
+  '_xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'
+  '_xsi:schemaLocation': >-
+    http://www.liquibase.org/xml/ns/dbchangelog-ext
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/pro
+    http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro 
