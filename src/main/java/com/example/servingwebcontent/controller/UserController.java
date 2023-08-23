@@ -46,7 +46,7 @@ public class UserController {
     @GetMapping("/user")
     public String main(Model model){
         model.addAttribute("users", userService.findAll());
-            return "userList";
+        return "userList";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")

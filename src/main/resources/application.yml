@@ -1,0 +1,12 @@
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        password: Sova1029
+        url: jdbc:postgresql://127.0.0.1:5432/Project
+        username: postgres
+    freemarker:
+        expose-request-attributes: true
+    jpa:
+        generate-ddl: true
+    main:
+        allow-circular-references: true

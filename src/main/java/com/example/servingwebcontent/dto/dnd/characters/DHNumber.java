@@ -1,6 +1,6 @@
 package com.example.servingwebcontent.dto.dnd.characters;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class DHNumber {

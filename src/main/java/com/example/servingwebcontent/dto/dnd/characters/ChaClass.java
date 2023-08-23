@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.Set;
+import jakarta.persistence.*;import java.util.Set;
 
 @Entity
 @Table(name="character_class")

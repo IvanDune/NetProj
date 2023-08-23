@@ -1,13 +1,12 @@
 package com.example.servingwebcontent.dto;
 import com.example.servingwebcontent.dto.dnd.characters.Character;
-import com.sun.xml.bind.v2.TODO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.*;
 
 @Table(name="user", schema = "public")
