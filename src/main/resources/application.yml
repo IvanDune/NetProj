@@ -2,7 +2,7 @@ spring:
     datasource:
         driver-class-name: org.postgresql.Driver
         password: Sova1029
-        url: jdbc:postgresql://127.0.0.1:5432/Project
+        url: jdbc:postgresql://localhost/Project
         username: postgres
     freemarker:
         expose-request-attributes: true
@@ -10,3 +10,9 @@ spring:
         generate-ddl: true
     main:
         allow-circular-references: true
+
+    liquibase:
+        change-log: classpath:liquibase/liquibase-outputChangeLog.xml
+springdoc:
+    swagger-ui:
+        path: /swagger-ui.html

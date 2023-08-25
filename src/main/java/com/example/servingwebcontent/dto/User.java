@@ -14,7 +14,9 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User implements UserDetails, Comparable<User>{     //TODO Почему используем UserDetails
+public class User implements UserDetails, Comparable<User>{
+    //TODO Почему используем UserDetails
+    //TODO Заменить использование .xml liquibase на .yml в корректной форме
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")

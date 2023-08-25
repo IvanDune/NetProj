@@ -1,108 +1,104 @@
+
 databaseChangeLog:
-  changeSet:
+  - changeSet:
     - createTable:
         column:
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: user_character_pkey
-            _name: character_id
-            _type: BIGINT
+            name: character_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: user_character_pkey
-            _name: characters_id
-            _type: BIGINT
+            name: characters_id
+            type: BIGINT
         _tableName: user_character
-      _author: Lenovo (generated)
-      _id: 1692781944122-1
+
     - createTable:
         column:
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: weapon_property_pkey
-            _name: weapon_id
-            _type: BIGINT
+            name: weapon_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: weapon_property_pkey
-            _name: weapon_property_set_id
-            _type: BIGINT
+            name: weapon_property_set_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
-            _name: weapon_properties_set_id
-            _type: BIGINT
+            name: weapon_properties_set_id
+            type: BIGINT
         _tableName: weapon_property
-      _author: Lenovo (generated)
-      _id: 1692781944122-2
+
     - createTable:
         column:
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_variety_pkey
-            _name: race_id
-            _type: BIGINT
+            name: race_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_variety_pkey
-            _name: race_varieties_set_id
-            _type: BIGINT
+            name: race_varieties_set_id
+            type: BIGINT
         _tableName: race_variety
-      _author: Lenovo (generated)
-      _id: 1692781944122-3
+
     - createTable:
         column:
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_ability_pkey
-            _name: race_id
-            _type: BIGINT
+            name: race_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_ability_pkey
-            _name: race_abilities_set_id
-            _type: BIGINT
+            name: race_abilities_set_id
+            type: BIGINT
         _tableName: race_ability
-      _author: Lenovo (generated)
-      _id: 1692781944122-4
+
     - createTable:
         column:
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_variety_abilities_pkey
-            _name: race_variety_id
-            _type: BIGINT
+            name: race_variety_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_variety_abilities_pkey
-            _name: race_abilities_set_id
-            _type: BIGINT
+            name: race_abilities_set_id
+            type: BIGINT
         _tableName: race_variety_abilities
-      _author: Lenovo (generated)
-      _id: 1692781944122-5
+
     - createTable:
         column:
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: reviews_pkey
-            _name: master
-            _type: BIGINT
+            name: master
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: reviews_pkey
-            _name: reviews_id
-            _type: BIGINT
+            name: reviews_id
+            type: BIGINT
         _tableName: reviews
       _author: Lenovo (generated)
       _id: 1692781944122-6
@@ -112,14 +108,14 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: class_ability_pkey
-            _name: class_id
-            _type: BIGINT
+            name: class_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: class_ability_pkey
-            _name: class_abilities_set_id
-            _type: BIGINT
+            name: class_abilities_set_id
+            type: BIGINT
         _tableName: class_ability
       _author: Lenovo (generated)
       _id: 1692781944122-7
@@ -129,20 +125,20 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_variety_buff_pkey
-            _name: race_variety_id
-            _type: BIGINT
+            name: race_variety_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_variety_buff_pkey
-            _name: race_abilities_set_id
-            _type: BIGINT
-          - _name: buffs
-            _type: VARCHAR(255)
+            name: race_abilities_set_id
+            type: BIGINT
+          - name: buffs
+            type: VARCHAR(255)
           - constraints:
               _nullable: 'false'
-            _name: buffs_id
-            _type: BIGINT
+            name: buffs_id
+            type: BIGINT
         _tableName: race_variety_buff
       _author: Lenovo (generated)
       _id: 1692781944122-8
@@ -211,22 +207,22 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: armor_pkey
-            _name: id
-            _type: BIGINT
-          - _name: baseac
-            _type: INTEGER
-          - _name: disadvantage
-            _type: BOOLEAN
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: price
-            _type: INTEGER
-          - _name: strength
-            _type: INTEGER
-          - _name: type
-            _type: VARCHAR(255)
-          - _name: weight
-            _type: INTEGER
+            name: id
+            type: BIGINT
+          - name: baseac
+            type: INTEGER
+          - name: disadvantage
+            type: BOOLEAN
+          - name: name
+            type: VARCHAR(255)
+          - name: price
+            type: INTEGER
+          - name: strength
+            type: INTEGER
+          - name: type
+            type: VARCHAR(255)
+          - name: weight
+            type: INTEGER
         _tableName: armor
       _author: Lenovo (generated)
       _id: 1692781944122-18
@@ -237,14 +233,14 @@ databaseChangeLog:
               _primaryKey: 'true'
               _primaryKeyName: cha_class_pkey
             _autoIncrement: 'true'
-            _name: id
-            _type: BIGINT
-          - _name: description
-            _type: VARCHAR(255)
-          - _name: hit_dice
-            _type: INTEGER
-          - _name: name
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: description
+            type: VARCHAR(255)
+          - name: hit_dice
+            type: INTEGER
+          - name: name
+            type: VARCHAR(255)
         _tableName: cha_class
       _author: Lenovo (generated)
       _id: 1692781944122-19
@@ -254,26 +250,26 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: character_pkey
-            _name: id
-            _type: BIGINT
-          - _name: characteristics
-            _type: BIGINT
-          - _name: class
-            _type: BIGINT
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: race
-            _type: BIGINT
-          - _name: user_id
-            _type: BIGINT
-          - _name: race_variety
-            _type: BIGINT
-          - _name: class_name
-            _type: VARCHAR(255)
-          - _name: level
-            _type: INTEGER
-          - _name: race_name
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: characteristics
+            type: BIGINT
+          - name: class
+            type: BIGINT
+          - name: name
+            type: VARCHAR(255)
+          - name: race
+            type: BIGINT
+          - name: user_id
+            type: BIGINT
+          - name: race_variety
+            type: BIGINT
+          - name: classname
+            type: VARCHAR(255)
+          - name: level
+            type: INTEGER
+          - name: racename
+            type: VARCHAR(255)
         _tableName: character
       _author: Lenovo (generated)
       _id: 1692781944122-20
@@ -283,12 +279,12 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: characteristic_buff_pkey
-            _name: id
-            _type: BIGINT
-          - _name: mod
-            _type: INTEGER
-          - _name: name
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: mod
+            type: INTEGER
+          - name: name
+            type: VARCHAR(255)
         _tableName: characteristic_buff
       _author: Lenovo (generated)
       _id: 1692781944122-21
@@ -298,34 +294,34 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: characteristics_pkey
-            _name: id
-            _type: BIGINT
-          - _name: charisma
-            _type: INTEGER
-          - _name: charisma_mod
-            _type: INTEGER
-          - _name: constitution
-            _type: INTEGER
-          - _name: constitution_mod
-            _type: INTEGER
-          - _name: dexterity
-            _type: INTEGER
-          - _name: dexterity_mod
-            _type: INTEGER
-          - _name: essence_id
-            _type: BIGINT
-          - _name: intelligence
-            _type: INTEGER
-          - _name: intelligence_mod
-            _type: INTEGER
-          - _name: strength
-            _type: INTEGER
-          - _name: strength_mod
-            _type: INTEGER
-          - _name: wisdom
-            _type: INTEGER
-          - _name: wisdom_mod
-            _type: INTEGER
+            name: id
+            type: BIGINT
+          - name: charisma
+            type: INTEGER
+          - name: charisma_mod
+            type: INTEGER
+          - name: constitution
+            type: INTEGER
+          - name: constitution_mod
+            type: INTEGER
+          - name: dexterity
+            type: INTEGER
+          - name: dexterity_mod
+            type: INTEGER
+          - name: essence_id
+            type: BIGINT
+          - name: intelligence
+            type: INTEGER
+          - name: intelligence_mod
+            type: INTEGER
+          - name: strength
+            type: INTEGER
+          - name: strength_mod
+            type: INTEGER
+          - name: wisdom
+            type: INTEGER
+          - name: wisdom_mod
+            type: INTEGER
         _tableName: characteristics
       _author: Lenovo (generated)
       _id: 1692781944122-22
@@ -335,14 +331,14 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: class_abilities_pkey
-            _name: id
-            _type: BIGINT
-          - _name: description
-            _type: VARCHAR(255)
-          - _name: level
-            _type: INTEGER
-          - _name: name
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: description
+            type: VARCHAR(255)
+          - name: level
+            type: INTEGER
+          - name: name
+            type: VARCHAR(255)
         _tableName: class_abilities
       _author: Lenovo (generated)
       _id: 1692781944122-23
@@ -350,10 +346,10 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: class_id
-            _type: BIGINT
-          - _name: saves
-            _type: VARCHAR(255)
+            name: class_id
+            type: BIGINT
+          - name: saves
+            type: VARCHAR(255)
         _tableName: class_armors
       _author: Lenovo (generated)
       _id: 1692781944122-24
@@ -361,10 +357,10 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: class_id
-            _type: BIGINT
-          - _name: saves
-            _type: VARCHAR(255)
+            name: class_id
+            type: BIGINT
+          - name: saves
+            type: VARCHAR(255)
         _tableName: class_saves
       _author: Lenovo (generated)
       _id: 1692781944122-25
@@ -372,10 +368,10 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: class_id
-            _type: BIGINT
-          - _name: saves
-            _type: VARCHAR(255)
+            name: class_id
+            type: BIGINT
+          - name: saves
+            type: VARCHAR(255)
         _tableName: class_skills
       _author: Lenovo (generated)
       _id: 1692781944122-26
@@ -383,10 +379,10 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: class_id
-            _type: BIGINT
-          - _name: saves
-            _type: VARCHAR(255)
+            name: class_id
+            type: BIGINT
+          - name: saves
+            type: VARCHAR(255)
         _tableName: class_tools
       _author: Lenovo (generated)
       _id: 1692781944122-27
@@ -394,10 +390,10 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: class_id
-            _type: BIGINT
-          - _name: saves
-            _type: VARCHAR(255)
+            name: class_id
+            type: BIGINT
+          - name: saves
+            type: VARCHAR(255)
         _tableName: class_weapon
       _author: Lenovo (generated)
       _id: 1692781944122-28
@@ -407,10 +403,10 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: dhnumber_pkey
-            _name: id
-            _type: BIGINT
-          - _name: num
-            _type: INTEGER
+            name: id
+            type: BIGINT
+          - name: num
+            type: INTEGER
         _tableName: dhnumber
       _author: Lenovo (generated)
       _id: 1692781944122-29
@@ -420,16 +416,16 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: equipment_pkey
-            _name: id
-            _type: BIGINT
-          - _name: description
-            _type: VARCHAR(255)
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: price
-            _type: INTEGER
-          - _name: weight
-            _type: INTEGER
+            name: id
+            type: BIGINT
+          - name: description
+            type: VARCHAR(255)
+          - name: name
+            type: VARCHAR(255)
+          - name: price
+            type: INTEGER
+          - name: weight
+            type: INTEGER
         _tableName: equipment
       _author: Lenovo (generated)
       _id: 1692781944122-30
@@ -439,18 +435,18 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: game_pkey
-            _name: id
-            _type: BIGINT
-          - _name: date_time
-            _type: TIMESTAMP WITHOUT TIME ZONE
-          - _name: description
-            _type: VARCHAR(2048)
-          - _name: discord
-            _type: VARCHAR(2048)
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: system
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: date_time
+            type: TIMESTAMP WITHOUT TIME ZONE
+          - name: description
+            type: VARCHAR(2048)
+          - name: discord
+            type: VARCHAR(2048)
+          - name: name
+            type: VARCHAR(255)
+          - name: system
+            type: VARCHAR(255)
         _tableName: game
       _author: Lenovo (generated)
       _id: 1692781944122-31
@@ -460,16 +456,16 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: game_system_pkey
-            _name: id
-            _type: BIGINT
-          - _name: comments
-            _type: VARCHAR(255)
-          - _name: description
-            _type: VARCHAR(255)
-          - _name: dices
-            _type: VARCHAR(255)
-          - _name: name
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: comments
+            type: VARCHAR(255)
+          - name: description
+            type: VARCHAR(255)
+          - name: dices
+            type: VARCHAR(255)
+          - name: name
+            type: VARCHAR(255)
         _tableName: game_system
       _author: Lenovo (generated)
       _id: 1692781944122-32
@@ -479,14 +475,14 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: grade_pkey
-            _name: id
-            _type: INTEGER
-          - _name: value
-            _type: INTEGER
-          - _name: mean
-            _type: FLOAT8
-          - _name: master_number
-            _type: INTEGER
+            name: id
+            type: INTEGER
+          - name: value
+            type: INTEGER
+          - name: mean
+            type: FLOAT8
+          - name: master_number
+            type: INTEGER
         _tableName: grade
       _author: Lenovo (generated)
       _id: 1692781944122-33
@@ -496,16 +492,16 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: message_pkey
-            _name: id
-            _type: BIGINT
-          - _name: num
-            _type: INTEGER
+            name: id
+            type: BIGINT
+          - name: num
+            type: INTEGER
           - constraints:
               _nullable: 'false'
-            _name: text
-            _type: VARCHAR(2048)
-          - _name: author
-            _type: VARCHAR(255)
+            name: text
+            type: VARCHAR(2048)
+          - name: author
+            type: VARCHAR(255)
         _tableName: message
       _author: Lenovo (generated)
       _id: 1692781944122-34
@@ -516,16 +512,16 @@ databaseChangeLog:
               _primaryKey: 'true'
               _primaryKeyName: race_pkey
             _autoIncrement: 'true'
-            _name: id
-            _type: BIGINT
-          - _name: age
-            _type: INTEGER
-          - _name: description
-            _type: VARCHAR(1000)
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: speed
-            _type: INTEGER
+            name: id
+            type: BIGINT
+          - name: age
+            type: INTEGER
+          - name: description
+            type: VARCHAR(1000)
+          - name: name
+            type: VARCHAR(255)
+          - name: speed
+            type: INTEGER
         _tableName: race
       _author: Lenovo (generated)
       _id: 1692781944122-35
@@ -536,14 +532,14 @@ databaseChangeLog:
               _primaryKey: 'true'
               _primaryKeyName: race_abilities_pkey
             _autoIncrement: 'true'
-            _name: id
-            _type: BIGINT
-          - _name: description
-            _type: VARCHAR(1000)
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: race_id
-            _type: BIGINT
+            name: id
+            type: BIGINT
+          - name: description
+            type: VARCHAR(1000)
+          - name: name
+            type: VARCHAR(255)
+          - name: race_id
+            type: BIGINT
         _tableName: race_abilities
       _author: Lenovo (generated)
       _id: 1692781944122-36
@@ -551,14 +547,14 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: race_id
-            _type: BIGINT
-          - _name: buffs
-            _type: VARCHAR(255)
+            name: race_id
+            type: BIGINT
+          - name: buffs
+            type: VARCHAR(255)
           - constraints:
               _nullable: 'false'
-            _name: buffs_id
-            _type: BIGINT
+            name: buffs_id
+            type: BIGINT
         _tableName: race_buff
       _author: Lenovo (generated)
       _id: 1692781944122-37
@@ -568,12 +564,12 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: race_varieties_pkey
-            _name: id
-            _type: BIGINT
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: description
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: name
+            type: VARCHAR(255)
+          - name: description
+            type: VARCHAR(255)
         _tableName: race_varieties
       _author: Lenovo (generated)
       _id: 1692781944122-38
@@ -583,18 +579,18 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: review_pkey
-            _name: id
-            _type: BIGINT
-          - _name: author
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: author
+            type: VARCHAR(255)
           - constraints:
               _nullable: 'false'
-            _name: grade
-            _type: INTEGER
-          - _name: master
-            _type: VARCHAR(255)
-          - _name: message
-            _type: VARCHAR(255)
+            name: grade
+            type: INTEGER
+          - name: master
+            type: VARCHAR(255)
+          - name: message
+            type: VARCHAR(255)
         _tableName: review
       _author: Lenovo (generated)
       _id: 1692781944122-39
@@ -604,22 +600,22 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: spell_pkey
-            _name: id
-            _type: BIGINT
-          - _name: components
-            _type: VARCHAR(255)
-          - _name: duration
-            _type: VARCHAR(255)
-          - _name: level
-            _type: INTEGER
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: range
-            _type: VARCHAR(255)
-          - _name: school
-            _type: VARCHAR(255)
-          - _name: spell_casting_time
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: components
+            type: VARCHAR(255)
+          - name: duration
+            type: VARCHAR(255)
+          - name: level
+            type: INTEGER
+          - name: name
+            type: VARCHAR(255)
+          - name: range
+            type: VARCHAR(255)
+          - name: school
+            type: VARCHAR(255)
+          - name: spell_casting_time
+            type: VARCHAR(255)
         _tableName: spell
       _author: Lenovo (generated)
       _id: 1692781944122-40
@@ -627,10 +623,10 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: spell_id
-            _type: BIGINT
-          - _name: classes
-            _type: VARCHAR(255)
+            name: spell_id
+            type: BIGINT
+          - name: classes
+            type: VARCHAR(255)
         _tableName: spell_classes
       _author: Lenovo (generated)
       _id: 1692781944122-41
@@ -640,28 +636,28 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: user_pkey
-            _name: id
-            _type: BIGINT
-          - _name: active
-            _type: BOOLEAN
-          - _name: email
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: active
+            type: BOOLEAN
+          - name: email
+            type: VARCHAR(255)
           - constraints:
               _nullable: 'false'
-            _name: login
-            _type: VARCHAR(255)
+            name: login
+            type: VARCHAR(255)
           - constraints:
               _nullable: 'false'
-            _name: nickname
-            _type: VARCHAR(255)
+            name: nickname
+            type: VARCHAR(255)
           - constraints:
               _nullable: 'false'
-            _name: password
-            _type: VARCHAR(255)
-          - _name: description
-            _type: VARCHAR(255)
-          - _name: grade
-            _type: INTEGER
+            name: password
+            type: VARCHAR(255)
+          - name: description
+            type: VARCHAR(255)
+          - name: grade
+            type: INTEGER
         _tableName: user
       _author: Lenovo (generated)
       _id: 1692781944122-42
@@ -669,10 +665,10 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: user_id
-            _type: BIGINT
-          - _name: roles
-            _type: VARCHAR(255)
+            name: user_id
+            type: BIGINT
+          - name: roles
+            type: VARCHAR(255)
         _tableName: user_role
       _author: Lenovo (generated)
       _id: 1692781944122-43
@@ -680,12 +676,12 @@ databaseChangeLog:
         column:
           - constraints:
               _nullable: 'false'
-            _name: user_id
-            _type: BIGINT
+            name: user_id
+            type: BIGINT
           - constraints:
               _nullable: 'false'
-            _name: game_id
-            _type: BIGINT
+            name: game_id
+            type: BIGINT
         _tableName: user_sub
       _author: Lenovo (generated)
       _id: 1692781944122-44
@@ -695,24 +691,24 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: weapon_pkey
-            _name: id
-            _type: BIGINT
-          - _name: dice_damage
-            _type: INTEGER
-          - _name: long_range
-            _type: BOOLEAN
-          - _name: military
-            _type: BOOLEAN
-          - _name: mod
-            _type: INTEGER
-          - _name: name
-            _type: VARCHAR(255)
-          - _name: price
-            _type: INTEGER
-          - _name: value_damage
-            _type: INTEGER
-          - _name: weight
-            _type: INTEGER
+            name: id
+            type: BIGINT
+          - name: dice_damage
+            type: INTEGER
+          - name: long_range
+            type: BOOLEAN
+          - name: military
+            type: BOOLEAN
+          - name: mod
+            type: INTEGER
+          - name: name
+            type: VARCHAR(255)
+          - name: price
+            type: INTEGER
+          - name: value_damage
+            type: INTEGER
+          - name: weight
+            type: INTEGER
         _tableName: weapon
       _author: Lenovo (generated)
       _id: 1692781944122-45
@@ -722,12 +718,12 @@ databaseChangeLog:
               _nullable: 'false'
               _primaryKey: 'true'
               _primaryKeyName: weapon_properties_pkey
-            _name: id
-            _type: BIGINT
-          - _name: description
-            _type: VARCHAR(255)
-          - _name: name
-            _type: VARCHAR(255)
+            name: id
+            type: BIGINT
+          - name: description
+            type: VARCHAR(255)
+          - name: name
+            type: VARCHAR(255)
         _tableName: weapon_properties
       _author: Lenovo (generated)
       _id: 1692781944122-46
@@ -1101,15 +1097,3 @@ databaseChangeLog:
         _validate: 'true'
       _author: Lenovo (generated)
       _id: 1692781944122-75
-  _xmlns: 'http://www.liquibase.org/xml/ns/dbchangelog'
-  '_xmlns:ext': 'http://www.liquibase.org/xml/ns/dbchangelog-ext'
-  '_xmlns:pro': 'http://www.liquibase.org/xml/ns/pro'
-  '_xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'
-  '_xsi:schemaLocation': >-
-    http://www.liquibase.org/xml/ns/dbchangelog-ext
-    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-    http://www.liquibase.org/xml/ns/pro
-    http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd
-    http://www.liquibase.org/xml/ns/dbchangelog
-    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro 

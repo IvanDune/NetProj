@@ -1,0 +1,525 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Lenovo (generated)" id="1692940901064-1">
+        <createTable tableName="user_character">
+            <column name="character_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_character_pkey"/>
+            </column>
+            <column name="characters_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_character_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-2">
+        <createTable tableName="weapon_property">
+            <column name="weapon_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="weapon_property_pkey"/>
+            </column>
+            <column name="weapon_property_set_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="weapon_property_pkey"/>
+            </column>
+            <column name="weapon_properties_set_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-3">
+        <createTable tableName="race_variety">
+            <column name="race_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_variety_pkey"/>
+            </column>
+            <column name="race_varieties_set_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_variety_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-4">
+        <createTable tableName="race_ability">
+            <column name="race_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_ability_pkey"/>
+            </column>
+            <column name="race_abilities_set_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_ability_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-5">
+        <createTable tableName="race_variety_abilities">
+            <column name="race_variety_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_variety_abilities_pkey"/>
+            </column>
+            <column name="race_abilities_set_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_variety_abilities_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-6">
+        <createTable tableName="reviews">
+            <column name="master" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reviews_pkey"/>
+            </column>
+            <column name="reviews_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reviews_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-7">
+        <createTable tableName="class_ability">
+            <column name="class_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="class_ability_pkey"/>
+            </column>
+            <column name="class_abilities_set_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="class_ability_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-8">
+        <createTable tableName="race_variety_buff">
+            <column name="race_variety_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_variety_buff_pkey"/>
+            </column>
+            <column name="race_abilities_set_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_variety_buff_pkey"/>
+            </column>
+            <column name="buffs" type="VARCHAR(255)"/>
+            <column name="buffs_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-9">
+        <addUniqueConstraint columnNames="characters_id" constraintName="uk_8jhk5la0d778fiwx5myssea3b" tableName="user_character"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-10">
+        <addUniqueConstraint columnNames="weapon_properties_set_id" constraintName="uk_drgheoevcjt1mc3ncq6tn79r4" tableName="weapon_property"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-11">
+        <addUniqueConstraint columnNames="race_varieties_set_id" constraintName="uk_e2a9l6pqooyytfp46anpghso4" tableName="race_variety"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-12">
+        <addUniqueConstraint columnNames="race_abilities_set_id" constraintName="uk_hk5eyi6grs014xtulc45nb8bo" tableName="race_ability"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-13">
+        <addUniqueConstraint columnNames="race_abilities_set_id" constraintName="uk_jx8m4t3eqjxr4y1wvovi6t9sy" tableName="race_variety_abilities"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-14">
+        <addUniqueConstraint columnNames="reviews_id" constraintName="uk_kq2lqep9gl0fol0xfmqfpm1ib" tableName="reviews"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-15">
+        <addUniqueConstraint columnNames="class_abilities_set_id" constraintName="uk_nhrd6ctemm23ohc365u3vcg7i" tableName="class_ability"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-16">
+        <addUniqueConstraint columnNames="race_abilities_set_id" constraintName="uk_q4bvc1vtn0hbgbdy005mxrw2y" tableName="race_variety_buff"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-17">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="hibernate_sequence" startValue="1"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-18">
+        <createTable tableName="armor">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="armor_pkey"/>
+            </column>
+            <column name="baseac" type="INTEGER"/>
+            <column name="disadvantage" type="BOOLEAN"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="INTEGER"/>
+            <column name="strength" type="INTEGER"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="weight" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-19">
+        <createTable tableName="cha_class">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cha_class_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="hit_dice" type="INTEGER"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-20">
+        <createTable tableName="character">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="character_pkey"/>
+            </column>
+            <column name="characteristics" type="BIGINT"/>
+            <column name="class" type="BIGINT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="race" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="race_variety" type="BIGINT"/>
+            <column name="class_name" type="VARCHAR(255)"/>
+            <column name="level" type="INTEGER"/>
+            <column name="race_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-21">
+        <createTable tableName="characteristic_buff">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="characteristic_buff_pkey"/>
+            </column>
+            <column name="mod" type="INTEGER"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-22">
+        <createTable tableName="characteristics">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="characteristics_pkey"/>
+            </column>
+            <column name="charisma" type="INTEGER"/>
+            <column name="charisma_mod" type="INTEGER"/>
+            <column name="constitution" type="INTEGER"/>
+            <column name="constitution_mod" type="INTEGER"/>
+            <column name="dexterity" type="INTEGER"/>
+            <column name="dexterity_mod" type="INTEGER"/>
+            <column name="essence_id" type="BIGINT"/>
+            <column name="intelligence" type="INTEGER"/>
+            <column name="intelligence_mod" type="INTEGER"/>
+            <column name="strength" type="INTEGER"/>
+            <column name="strength_mod" type="INTEGER"/>
+            <column name="wisdom" type="INTEGER"/>
+            <column name="wisdom_mod" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-23">
+        <createTable tableName="class_abilities">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="class_abilities_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="level" type="INTEGER"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-24">
+        <createTable tableName="class_armors">
+            <column name="class_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saves" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-25">
+        <createTable tableName="class_saves">
+            <column name="class_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saves" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-26">
+        <createTable tableName="class_skills">
+            <column name="class_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saves" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-27">
+        <createTable tableName="class_tools">
+            <column name="class_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saves" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-28">
+        <createTable tableName="class_weapon">
+            <column name="class_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saves" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-29">
+        <createTable tableName="dhnumber">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="dhnumber_pkey"/>
+            </column>
+            <column name="num" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-30">
+        <createTable tableName="equipment">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="equipment_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="INTEGER"/>
+            <column name="weight" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-31">
+        <createTable tableName="game">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="game_pkey"/>
+            </column>
+            <column name="date_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="VARCHAR(2048)"/>
+            <column name="discord" type="VARCHAR(2048)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="system" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-32">
+        <createTable tableName="game_system">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="game_system_pkey"/>
+            </column>
+            <column name="comments" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="dices" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-33">
+        <createTable tableName="grade">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="grade_pkey"/>
+            </column>
+            <column name="value" type="INTEGER"/>
+            <column name="mean" type="FLOAT8"/>
+            <column name="master_number" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-34">
+        <createTable tableName="message">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="message_pkey"/>
+            </column>
+            <column name="num" type="INTEGER"/>
+            <column name="text" type="VARCHAR(2048)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-35">
+        <createTable tableName="race">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_pkey"/>
+            </column>
+            <column name="age" type="INTEGER"/>
+            <column name="description" type="VARCHAR(1000)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="speed" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-36">
+        <createTable tableName="race_abilities">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_abilities_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(1000)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="race_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-37">
+        <createTable tableName="race_buff">
+            <column name="race_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="buffs" type="VARCHAR(255)"/>
+            <column name="buffs_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-38">
+        <createTable tableName="race_varieties">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="race_varieties_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-39">
+        <createTable tableName="review">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="review_pkey"/>
+            </column>
+            <column name="author" type="VARCHAR(255)"/>
+            <column name="grade" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="master" type="VARCHAR(255)"/>
+            <column name="message" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-40">
+        <createTable tableName="spell">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="spell_pkey"/>
+            </column>
+            <column name="components" type="VARCHAR(255)"/>
+            <column name="duration" type="VARCHAR(255)"/>
+            <column name="level" type="INTEGER"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="range" type="VARCHAR(255)"/>
+            <column name="school" type="VARCHAR(255)"/>
+            <column name="spell_casting_time" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-41">
+        <createTable tableName="spell_classes">
+            <column name="spell_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="classes" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-42">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="active" type="BOOLEAN"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="login" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nickname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="grade" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-43">
+        <createTable tableName="user_role">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-44">
+        <createTable tableName="user_sub">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="game_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-45">
+        <createTable tableName="weapon">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="weapon_pkey"/>
+            </column>
+            <column name="dice_damage" type="INTEGER"/>
+            <column name="long_range" type="BOOLEAN"/>
+            <column name="military" type="BOOLEAN"/>
+            <column name="mod" type="INTEGER"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="INTEGER"/>
+            <column name="value_damage" type="INTEGER"/>
+            <column name="weight" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-46">
+        <createTable tableName="weapon_properties">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="weapon_properties_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-47">
+        <addPrimaryKey columnNames="game_id, user_id" constraintName="user_sub_pkey" tableName="user_sub"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-48">
+        <addForeignKeyConstraint baseColumnNames="weapon_id" baseTableName="weapon_property" constraintName="fk173mjt87j9lqk9st3s9ep6qha" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="weapon" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-49">
+        <addForeignKeyConstraint baseColumnNames="weapon_properties_set_id" baseTableName="weapon_property" constraintName="fk27a2trvxnnsho7dp95qupetw7" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="weapon_properties" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-50">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="user_sub" constraintName="fk2guxlbwqygqeh0ea883vs9gfl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="game" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-51">
+        <addForeignKeyConstraint baseColumnNames="class_id" baseTableName="class_armors" constraintName="fk2o6w5okewfxr7fm1w88xfbop0" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cha_class" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-52">
+        <addForeignKeyConstraint baseColumnNames="character_id" baseTableName="user_character" constraintName="fk3biw8y8b43y4oi7kjlonomqd5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-53">
+        <addForeignKeyConstraint baseColumnNames="characters_id" baseTableName="user_character" constraintName="fk6lnodwr1emmabro73466xrkhy" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="character" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-54">
+        <addForeignKeyConstraint baseColumnNames="spell_id" baseTableName="spell_classes" constraintName="fk7h0xg2l0vh63ld0hwg9eullj7" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="spell" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-55">
+        <addForeignKeyConstraint baseColumnNames="class_id" baseTableName="class_tools" constraintName="fk7qtiip0bwf917s8dgxwo5dsko" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cha_class" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-56">
+        <addForeignKeyConstraint baseColumnNames="class_id" baseTableName="class_ability" constraintName="fk9g0ikn76jiv911fijdboiyird" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cha_class" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-57">
+        <addForeignKeyConstraint baseColumnNames="race_abilities_set_id" baseTableName="race_variety_abilities" constraintName="fkagdp1yyygyvwuw9corbs8qgu9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race_abilities" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-58">
+        <addForeignKeyConstraint baseColumnNames="class_abilities_set_id" baseTableName="class_ability" constraintName="fkbjsaehcwvq09ume7vhqvncvaf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="class_abilities" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-59">
+        <addForeignKeyConstraint baseColumnNames="race_varieties_set_id" baseTableName="race_variety" constraintName="fkc1ldugid5u2tvqmgtj1wer77e" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race_varieties" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-60">
+        <addForeignKeyConstraint baseColumnNames="race_id" baseTableName="race_variety" constraintName="fkh6ldr0wmlgx2neaqwroag9kb4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-61">
+        <addForeignKeyConstraint baseColumnNames="race_variety_id" baseTableName="race_variety_abilities" constraintName="fkh8p9ihuvk3e1ouqws91rel65r" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race_varieties" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-62">
+        <addForeignKeyConstraint baseColumnNames="class_id" baseTableName="class_skills" constraintName="fkih1ibhmq4qcycnawlei6m9pre" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cha_class" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-63">
+        <addForeignKeyConstraint baseColumnNames="reviews_id" baseTableName="reviews" constraintName="fkjclmy5qvql6ar58iu83e73v8v" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="review" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-64">
+        <addForeignKeyConstraint baseColumnNames="class_id" baseTableName="class_weapon" constraintName="fkmhy9uo9hreodclt9trbe6cdvr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cha_class" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-65">
+        <addForeignKeyConstraint baseColumnNames="race_id" baseTableName="race_ability" constraintName="fkmpe1tvsqfo3f27bkueff337nt" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-66">
+        <addForeignKeyConstraint baseColumnNames="class_id" baseTableName="class_saves" constraintName="fkmvpdxvjyyxpaqo249punhnvwx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cha_class" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-67">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_sub" constraintName="fkqkds8nebt4xox98oxpb3pnb2r" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-68">
+        <addForeignKeyConstraint baseColumnNames="race_id" baseTableName="race_buff" constraintName="fkrbl91opmts9tdm1y2umdh1yph" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-69">
+        <addForeignKeyConstraint baseColumnNames="buffs_id" baseTableName="race_buff" constraintName="fkrl0xalae7veh2xifbb31udi1e" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="characteristic_buff" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-70">
+        <addForeignKeyConstraint baseColumnNames="race_abilities_set_id" baseTableName="race_variety_buff" constraintName="fksihfvpkg0k12w5xgvlutq0mjq" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race_abilities" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-71">
+        <addForeignKeyConstraint baseColumnNames="race_variety_id" baseTableName="race_variety_buff" constraintName="fksjmn4gu2d2yr4ny70r2fd8t9x" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race_varieties" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-72">
+        <addForeignKeyConstraint baseColumnNames="buffs_id" baseTableName="race_variety_buff" constraintName="fksmckjqttgudr1wu91e9vj7gv9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="characteristic_buff" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-73">
+        <addForeignKeyConstraint baseColumnNames="race_abilities_set_id" baseTableName="race_ability" constraintName="fkt7cy8brkh630h81wh0fwr613" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="race_abilities" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-74">
+        <addForeignKeyConstraint baseColumnNames="master" baseTableName="reviews" constraintName="fktqhxi8b88t1vwy11409dvh7f9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Lenovo (generated)" id="1692940901064-75">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role" constraintName="user_role_user_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
