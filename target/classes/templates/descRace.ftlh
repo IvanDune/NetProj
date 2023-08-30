@@ -18,7 +18,7 @@
             <h6><p class="text-justify"> ${buff.getName()}: ${buff.getMod()}</p></h6>
         </#list>
         <h5>Abilities: </h5>
-        <#list race.raceAbilitiesSet as ability>
+        <#list race.raceAbilitySet as ability>
             <h6><p class="text-justify"> ${ability.name}: ${ability.description}</p></h6>
         </#list>
         <form method="post" action="goClass">
@@ -29,7 +29,7 @@
             <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="goClazz" value="${race.getId()}">Choose</button>
             <#else>
                 <h5>Variety: </h5>
-                <#list race.raceVarietiesSet as variety>
+                <#list race.getRaceVarietySet as variety>
                     <h5>Variety name: </h5>
                     <h6><p class="text-justify"> ${variety.name} </p></h6>
                     <h5>Variety buffs: </h5>
@@ -37,7 +37,7 @@
                         <h6><p class="text-justify"> ${buff.getName()}: ${buff.getMod()}</p></h6>
                     </#list>
                     <h5>Variety abilities: </h5>
-                    <#list variety.raceAbilitiesSet as ability>
+                    <#list variety.raceAbilitySet as ability>
                         <h6><p class="text-justify"> ${ability.name}: ${ability.description}</p></h6>
                     </#list>
                     <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="goClazz" value="${variety.getId()}">Choose</button>

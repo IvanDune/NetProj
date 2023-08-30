@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.dto;
+package com.example.servingwebcontent.dto.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,14 +20,14 @@ public class Review {
     @Column(name="grade")
     private int grade;
     @Column(name="master")
-    private String master;
+    private Long masterId;
     @Column(name="author")
-    private String author;
-    public Review(String message, int grade, String master, String author) {
+    private Long authorId;
+    public Review(String message, int grade, Long masterId, Long authorId) {
         this.message = message;
         this.grade = grade;
-        this.master = master;
-        this.author = author;
+        this.masterId = masterId;
+        this.authorId = authorId;
     }
 
 }

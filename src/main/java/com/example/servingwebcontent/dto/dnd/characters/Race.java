@@ -24,17 +24,17 @@ public class Race {
 
     @Column(name="abilities")
     @OneToMany
-    @CollectionTable(name = "race_ability", joinColumns = @JoinColumn(name = "race_id"))
-    private Set<RaceAbilities> raceAbilitiesSet;
+    @CollectionTable(name = "race_abilities", joinColumns = @JoinColumn(name = "race_id"))
+    private Set<RaceAbility> raceAbilitySet;
 
     @Column(name="varieties")
     @OneToMany
-    @CollectionTable(name = "race_variety", joinColumns = @JoinColumn(name = "race_id"))
-    private Set<RaceVarieties> raceVarietiesSet;
+    @CollectionTable(name = "race_varieties", joinColumns = @JoinColumn(name = "race_id"))
+    private Set<RaceVariety> raceVarietySet;
 
     @Column(name="buffs")
     @ManyToMany
-    @CollectionTable(name = "race_buff", joinColumns = @JoinColumn(name = "race_id"))
+    @CollectionTable(name = "race_buffs", joinColumns = @JoinColumn(name = "race_id"))
     @Enumerated(EnumType.STRING)
     private Set<CharacteristicBuff> buffs;
 
@@ -47,9 +47,9 @@ public class Race {
     @Column(name = "description")
     private String description;
 
-    public Race(String name, Set<RaceAbilities> raceAbilitiesSet, Set<CharacteristicBuff> buffs, int speed, int age, String description) {
+    public Race(String name, Set<RaceAbility> raceAbilitySet, Set<CharacteristicBuff> buffs, int speed, int age, String description) {
         this.name = name;
-        this.raceAbilitiesSet = raceAbilitiesSet;
+        this.raceAbilitySet = raceAbilitySet;
         this.buffs = buffs;
         this.speed = speed;
         this.age = age;

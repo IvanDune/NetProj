@@ -42,10 +42,10 @@ public class Weapon {
     @Column(name = "longRange")
     private boolean longRange;
 
-    @Column(name="properies")
+    @Column(name="properties")
     @OneToMany
-    @CollectionTable(name = "weapon_property", joinColumns = @JoinColumn(name = "weapon_id"))
-    private Set<WeaponProperties> weaponPropertiesSet;
+    @CollectionTable(name = "weapon_properties", joinColumns = @JoinColumn(name = "weapon_id"))
+    private Set<WeaponProperty> weaponPropertySet;
 
     public Weapon(String name, int price, int valueDamage, int diceDamage, int mod, int weight, boolean military, boolean longRange) {
         this.name = name;

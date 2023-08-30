@@ -54,7 +54,7 @@
 <#--                            <h6><p class="text-justify"> ${buff.name()}: ${buff.equals()}</p></h6>-->
 <#--                        </#list>-->
 <#--                        <h5>Variety abilities: </h5>-->
-<#--                        <#list variety.raceAbilitiesSet as ability>-->
+<#--                        <#list variety.raceAbilitySet as ability>-->
 <#--                            <h6><p class="text-justify"> ${ability.name}: ${ability.description}</p></h6>-->
 <#--                        </#list>-->
 <#--                        <button type="submit" class="btn btn-outline-primary ml-2 mt-2" name="goClazz" value="${variety.getId()}">Choose</button>-->

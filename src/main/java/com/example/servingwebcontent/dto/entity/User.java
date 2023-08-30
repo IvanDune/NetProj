@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.dto;
+package com.example.servingwebcontent.dto.entity;
 import com.example.servingwebcontent.dto.dnd.characters.Character;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

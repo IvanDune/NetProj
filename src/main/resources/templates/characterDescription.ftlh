@@ -18,7 +18,7 @@
             <h6><p class="text-justify"> ${buff.name()}: ${buff.equals()}</p></h6>
         </#list>
         <h5>Race abilities: </h5>
-        <#list race.raceAbilitiesSet as ability>
+        <#list race.raceAbilitySet as ability>
             <h6><p class="text-justify"> ${ability.name}: ${ability.description}</p></h6>
         </#list>
 

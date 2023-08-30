@@ -1,6 +1,6 @@
 package com.example.servingwebcontent.repos;
 
-import com.example.servingwebcontent.dto.Review;
+import com.example.servingwebcontent.dto.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReviewRepos extends JpaRepository<Review, Long> {

@@ -1,6 +1,0 @@
--- create table user_sub(
---         game_id int8 not null references game,
---         user_id int8 not null references user,
---         primary key (game_id, user_id)
---    );
---

@@ -7,28 +7,24 @@ import lombok.Setter;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="class_ability")
+@Table(name="weapon_property")
 @Getter
 @Setter
 @NoArgsConstructor
-public class ClassAbilities {
+public class WeaponProperty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name="level")
-    private int level;
-
-    public ClassAbilities(String name, String description, int level) {
+    public WeaponProperty(String name, String description) {
         this.name = name;
         this.description = description;
-        this.level = level;
     }
 }

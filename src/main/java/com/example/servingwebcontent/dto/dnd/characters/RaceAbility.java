@@ -11,14 +11,14 @@ import jakarta.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RaceAbilities {
+public class RaceAbility {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "raceId")
-    private Long raceId;
+    @Column(name = "raceInd")
+    private Long raceInd;
 
     @Column(name = "name")
     private String name;
@@ -26,8 +26,8 @@ public class RaceAbilities {
     @Column(name = "description")
     private String description;
 
-    public RaceAbilities(Long raceId, String name, String description) {
-        this.raceId = raceId;
+    public RaceAbility(Long raceInd, String name, String description) {
+        this.raceInd = raceInd;
         this.name = name;
         this.description = description;
     }

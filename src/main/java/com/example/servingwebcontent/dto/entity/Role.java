@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.dto;
+package com.example.servingwebcontent.dto.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 

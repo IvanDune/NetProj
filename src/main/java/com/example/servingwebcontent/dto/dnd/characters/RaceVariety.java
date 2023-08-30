@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RaceVarieties {
+public class RaceVariety {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -33,16 +33,16 @@ public class RaceVarieties {
     @Column(name="abilities")
     @OneToMany
     @CollectionTable(name = "raceVariety_abilities", joinColumns = @JoinColumn(name = "raceVariety_id"))
-    private Set<RaceAbilities> raceAbilitiesSet;
+    private Set<RaceAbility> raceAbilitySet;
 
-    public RaceVarieties(String name) {
+    public RaceVariety(String name) {
         this.name = name;
     }
 
-    public RaceVarieties(String name, Set<CharacteristicBuff> buffs, Set<RaceAbilities> raceAbilitiesSet, String description) {
+    public RaceVariety(String name, Set<CharacteristicBuff> buffs, Set<RaceAbility> raceAbilitySet, String description) {
         this.name = name;
         this.buffs = buffs;
-        this.raceAbilitiesSet = raceAbilitiesSet;
+        this.raceAbilitySet = raceAbilitySet;
         this.description=description;
     }
 }

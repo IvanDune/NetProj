@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.dto;
+package com.example.servingwebcontent.dto.entity;
 
 public enum System {
     Game, CORIOLIS, WITCHER, BLADES_IN_THE_DARK,

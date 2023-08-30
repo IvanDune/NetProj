@@ -32,25 +32,25 @@ public class ChaClass {
     @Enumerated(EnumType.STRING)
     private Set<ProficienciesSaves> pro_saves;
 
-    @Column(name="saves")
+    @Column(name="armors")
     @ElementCollection(targetClass = ProficienciesArmor.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "class_armors", joinColumns = @JoinColumn(name = "class_id"))
     @Enumerated(EnumType.STRING)
     private Set<ProficienciesArmor> pro_armor;
 
-    @Column(name="saves")
+    @Column(name="skills")
     @ElementCollection(targetClass = ProficienciesSkills.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "class_skills", joinColumns = @JoinColumn(name = "class_id"))
     @Enumerated(EnumType.STRING)
     private Set<ProficienciesSkills> pro_skills;
 
-    @Column(name="saves")
+    @Column(name="tools")
     @ElementCollection(targetClass = ProficienciesTools.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "class_tools", joinColumns = @JoinColumn(name = "class_id"))
     @Enumerated(EnumType.STRING)
     private Set<ProficienciesTools> pro_tools;
 
-    @Column(name="saves")
+    @Column(name="weapons")
     @ElementCollection(targetClass = ProficienciesWeapon.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "class_weapon", joinColumns = @JoinColumn(name = "class_id"))
     @Enumerated(EnumType.STRING)
@@ -58,8 +58,8 @@ public class ChaClass {
 
     @Column(name="abilities")
     @OneToMany
-    @CollectionTable(name = "class_ability", joinColumns = @JoinColumn(name = "class_id"))
-    private Set<ClassAbilities> classAbilitiesSet;
+    @CollectionTable(name = "class_abilities", joinColumns = @JoinColumn(name = "class_id"))
+    private Set<ClassAbility> classAbilitySet;
 
     public ChaClass(String name, String description, int hitDice) {
         this.name = name;
@@ -69,7 +69,7 @@ public class ChaClass {
 
     public ChaClass(String name, String description, int hitDice, Set<ProficienciesSaves> pro_saves,
                     Set<ProficienciesArmor> pro_armor, Set<ProficienciesSkills> pro_skills, Set<ProficienciesTools> pro_tools,
-                    Set<ProficienciesWeapon> pro_weapon, Set<ClassAbilities> classAbilitiesSet) {
+                    Set<ProficienciesWeapon> pro_weapon, Set<ClassAbility> classAbilitySet) {
         this.name = name;
         this.description = description;
         this.hitDice = hitDice;
@@ -78,6 +78,6 @@ public class ChaClass {
         this.pro_skills = pro_skills;
         this.pro_tools = pro_tools;
         this.pro_weapon = pro_weapon;
-        this.classAbilitiesSet = classAbilitiesSet;
+        this.classAbilitySet = classAbilitySet;
     }
 }

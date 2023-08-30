@@ -1,6 +1,6 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.dto.User;
+import com.example.servingwebcontent.dto.entity.User;
 import com.example.servingwebcontent.dto.dnd.characters.*;
 import com.example.servingwebcontent.dto.dnd.characters.Character;
 import com.example.servingwebcontent.logic.Randomizer;
@@ -112,7 +112,7 @@ public class CharacterController {
     public String raceDescription(@PathVariable Race race,
                                   Model model){
         model.addAttribute("race",race);
-        model.addAttribute("raceVariety",race.getRaceVarietiesSet().size());
+        model.addAttribute("raceVariety",race.getRaceVarietySet().size());
         return "descRace";
     }
 
@@ -145,7 +145,7 @@ public class CharacterController {
         model.addAttribute("character", character);
         model.addAttribute("race", race);
         model.addAttribute("clazz", chaClass);
-        model.addAttribute("raceVariety", race.getRaceVarietiesSet().size());
+        model.addAttribute("raceVariety", race.getRaceVarietySet().size());
 
         characterRepos.save(character);
         return "characterRes";
@@ -176,7 +176,7 @@ public class CharacterController {
     public String goClass(@RequestParam Long raceId, @RequestParam Long goClazz, Model model){
         Race race = raceRepos.findById(raceId).orElse(new Race());
         Character character = characterRepos.findByName("CharacterCreate");
-        if (race.getRaceVarietiesSet().size()!=0){
+        if (race.getRaceVarietySet().size()!=0){
             character.setRaceVariety(goClazz);
         }
         character.setRaceId(race.getId());
