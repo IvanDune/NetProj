@@ -1,16 +1,20 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.dto.Role;
-import com.example.servingwebcontent.dto.User;
+import com.example.servingwebcontent.dto.entity.Role;
+import com.example.servingwebcontent.dto.entity.User;
 import com.example.servingwebcontent.repos.UserRepos;
+import com.example.servingwebcontent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.awt.geom.RectangularShape;
 import java.util.Collections;
 import java.util.Map;
 
@@ -20,37 +24,17 @@ public class MainController {
     @Autowired
     private UserRepos userRepos;
 
-    @GetMapping("/")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name,
-                           Map<String, Object> model) {
-        model.put("name", name);
-        return "greeting";
-    }
+    @Autowired
+    UserService userService;
 
     @GetMapping("/main")
-    public String main(@AuthenticationPrincipal User user, Model model){
-        model.addAttribute("userChannel", user);
-        return "main"; }
+    public ResponseEntity<?> main(@AuthenticationPrincipal User user){
+        //Раньше передавался @Authentication User user
+        return ResponseEntity.ok().build(); }
 
     @PostMapping("/main")
-    public String add(@RequestParam String login, @RequestParam String password,
-                      @RequestParam String nickname, @RequestParam String email, Map<String, Object> model){
-
-        User user = new User(login,password,nickname,email);
-        User userFromDb = userRepos.findByLogin(user.getLogin());
-
-        if (userFromDb != null){
-            model.put("message", "User exist");
-            return "main";
-        }
-
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
-        userRepos.save(user);
-
-        Iterable<User> users = userRepos.findAll();
-        model.put("users",users);
-        return "main";
+    public ResponseEntity<?> addUser(@RequestBody String userInfo){
+        return userService.addUser(userInfo);
     }
 
 }

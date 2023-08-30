@@ -1,22 +1,21 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.dto.Review;
-import com.example.servingwebcontent.dto.Role;
-import com.example.servingwebcontent.dto.User;
+import com.example.servingwebcontent.dto.entity.Review;
+import com.example.servingwebcontent.dto.entity.Role;
+import com.example.servingwebcontent.dto.entity.User;
 import com.example.servingwebcontent.repos.ReviewRepos;
 import com.example.servingwebcontent.repos.UserRepos;
+import com.example.servingwebcontent.service.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@Controller
+@RestController
 @RequestMapping("/master")
 public class MasterController {
     @Autowired
@@ -25,65 +24,17 @@ public class MasterController {
     @Autowired
     ReviewRepos reviewRepos;
 
-    @GetMapping
-    public String main(@AuthenticationPrincipal User user, Model model){
-        List masters = new ArrayList<>();
-        for (User usr : userRepos.findAll()){
-            if(usr.getRoles().contains(Role.MASTER)){
-                masters.add(usr);
-            }
-        }
-        Collections.sort(masters);
-        model.addAttribute("masters",masters);
-        model.addAttribute("userChannel",user);
+    @Autowired
+    MasterService masterService;
 
-        return "master";
+    @GetMapping
+    public ResponseEntity<?> main(@AuthenticationPrincipal User user){
+        return masterService.mainPage(user);
     }
 
     @PostMapping
-    public String add(
-            @AuthenticationPrincipal User user,
-            @RequestParam Integer gr,
-            @RequestParam String mess,
-            @RequestParam String masterLogin, Model model){
-        if(gr==null){
-            List<User> masters = new ArrayList<>();
-            for (User usr : userRepos.findAll()){
-                if(usr.getRoles().contains("MASTER")){
-                    masters.add(usr);
-                }
-            }
-            model.addAttribute("masters",masters);
-            model.addAttribute("userChannel",user);
-            model.addAttribute("noMessage", "Enter your grade");
-
-            return "master";
-        }
-        if (mess==""){
-            List<User> masters = new ArrayList<>();
-            for (User usr : userRepos.findAll()){
-                if(usr.getRoles().contains("MASTER")){
-                    masters.add(usr);
-                }
-            }
-            model.addAttribute("masters",masters);
-            model.addAttribute("userChannel",user);
-            model.addAttribute("noMessage", "Enter your review and grade");
-
-            return "master";
-        }
-
-        Review review = new Review(mess, gr, masterLogin,user.getLogin());
-        reviewRepos.save(review);
-
-        User usr = userRepos.findByLogin(masterLogin);
-        usr.changeVote(review);
-
-
-        userRepos.save(usr);
-
-
-        return "redirect:/master";
+    public ResponseEntity<?> add(@RequestBody String messageInfo, @AuthenticationPrincipal User user){
+        return masterService.addMessage(messageInfo,user);
     }
 
 }
